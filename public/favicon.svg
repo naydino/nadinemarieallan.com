@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  
+  <rect x="0" y="0" width="64" height="64" fill="#f4f0e9"></rect>
+  
+  <rect x="5" y="5" width="54" height="54" fill="none" stroke="#2a2620" stroke-width="2"></rect>
+  
+  <rect x="11" y="11" width="42" height="42" fill="none" stroke="#2a2620" stroke-width="1"></rect>
+  
+  <text x="32" y="44" font-family="&#39;IBM Plex Mono&#39;, &#39;Courier New&#39;, monospace" font-style="italic" font-weight="300" font-size="32" fill="#2a2620" text-anchor="middle">n</text>
+</svg>

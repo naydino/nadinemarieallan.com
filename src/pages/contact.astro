@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="contact">
+  <section class="contact">
+    <span class="eyebrow">contact</span>
+    <p class="body-md line">for collaboration, commissions, or enquiries:</p>
+    <a class="cta-link email" href="mailto:hello@nadinemarieallan.com">hello@nadinemarieallan.com</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-7) var(--page-padding-x) var(--space-8);
+  }
+  .line {
+    margin-top: var(--space-3);
+  }
+  .email {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-size: var(--text-md);
+  }
+
+  @media (max-width: 600px) {
+    .contact { padding: var(--space-6) var(--page-padding-x-sm) var(--space-7); }
+  }
+</style>

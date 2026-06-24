@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const groups = [
+  {
+    year: '2026',
+    projects: [
+      { title: 'Seen By Something', tags: ['installation', 'generative-ai'], venue: 'IADE / UNIDCOM' },
+    ],
+  },
+  {
+    year: '2025',
+    projects: [
+      { title: 'The Oracle That Wears Us', tags: ['installation', 'generative-ai'], venue: 'IADE' },
+      { title: 'Snakeskin Jacket', tags: ['video-art', 'installation'], venue: 'Cucalorus Film Festival' },
+    ],
+  },
+  {
+    year: '2024',
+    projects: [
+      { title: 'KOOL WORLD', tags: ['video-art'], venue: 'Toronto International Film Festival' },
+      { title: 'Metropolis Unrestored / Fantastic Fest', tags: ['video-art', 'performance'], venue: 'Fantastic Fest' },
+    ],
+  },
+  {
+    year: '2022',
+    projects: [
+      { title: '#0000FF Velvet', tags: ['installation', 'projection-mapping'], venue: 'Cucalorus Film Festival' },
+      { title: 'Nosfera2', tags: ['installation', 'ar'], venue: 'Overlook Film Festival' },
+      { title: 'Diverse Voices of Her Words', tags: ['fine-art'], venue: 'Progress Gallery / Sasse Museum' },
+      { title: 'Dream Video Division (various)', tags: ['video-art'], venue: 'TIFF · Locarno · FuBaR · Fantastic Fest · Philadelphia' },
+      { title: 'Digital Debris Gallery', tags: ['performance', 'av'], venue: 'Los Angeles' },
+      { title: 'Pony Farm Residency', tags: ['installation', 'community'], venue: 'Northern California' },
+    ],
+  },
+  {
+    year: '2021',
+    projects: [
+      { title: 'Purple Rain Movie Remix', tags: ['video-art'], venue: 'Vidicon Video Art Festival' },
+    ],
+  },
+  {
+    year: 'pre-2020',
+    projects: [
+      { title: 'Brooklyn Fireproof', tags: ['curatorial'], venue: 'Brooklyn NY' },
+      { title: 'Fine Art Practice', tags: ['fine-art', 'painting'], venue: 'Los Angeles' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="work">
+  <section class="work">
+    <header class="head">
+      <span class="eyebrow">selected work</span>
+    </header>
+
+    <div class="list">
+      {groups.map((group) => (
+        <div class="group">
+          <div class="year-header">{group.year}</div>
+          {group.projects.map((project) => (
+            <a href="#" class="row">
+              <div class="thumb-wrap">
+                <img src="/images/thumb-placeholder.jpg" alt="" class="thumb" />
+              </div>
+              <div class="row-title">{project.title}</div>
+              <div class="row-tags">
+                {project.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+              <div class="row-venue">{project.venue}</div>
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .work {
+    max-width: var(--site-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-7);
+  }
+  .head {
+    margin-bottom: var(--space-5);
+  }
+  .year-header {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: var(--w-regular);
+    letter-spacing: var(--ls-base);
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: var(--space-4) 0 var(--space-1);
+    border-bottom: 1px solid var(--border);
+  }
+  .group:first-child .year-header {
+    padding-top: 0;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 72px 1fr auto auto;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-1);
+    margin: 0 calc(-1 * var(--space-1));
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition-base);
+  }
+  .row:hover {
+    background: var(--surface);
+  }
+  .thumb-wrap {
+    width: 72px;
+    height: 50px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter var(--transition-slow);
+  }
+  .row:hover .thumb {
+    filter: grayscale(0%);
+  }
+  .row-title {
+    font-family: var(--font-mono);
+    font-style: italic;
+    font-weight: var(--w-light);
+    font-size: var(--text-lg);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .row-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .row-venue {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: var(--w-light);
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 700px) {
+    .row {
+      grid-template-columns: 56px 1fr;
+      grid-template-areas:
+        'thumb title'
+        'tags  tags'
+        'venue venue';
+      row-gap: var(--space-1);
+    }
+    .thumb-wrap { grid-area: thumb; width: 56px; height: 40px; }
+    .row-title { grid-area: title; }
+    .row-tags { grid-area: tags; }
+    .row-venue { grid-area: venue; text-align: left; white-space: normal; }
+    .work { padding: var(--space-5) var(--page-padding-x-sm) var(--space-6); }
+  }
+</style>

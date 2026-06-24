@@ -1,0 +1,60 @@
+---
+const path = Astro.url.pathname;
+
+const items = [
+  { href: '/work', label: 'work' },
+  { href: '/about', label: 'about' },
+  { href: '/writing', label: 'writing' },
+  { href: '/contact', label: 'contact' },
+];
+
+function isActive(href: string) {
+  if (href === '/work') return path === '/' || path.startsWith('/work');
+  return path.startsWith(href);
+}
+---
+
+<header class="nav">
+  <a href="/" class="nav-logo" aria-label="nadine marie allan — home">
+    <span class="chop" style="--chop-size: 40px;">
+      <span class="chop-inner">
+        <span class="chop-line">nadine</span>
+        <span class="chop-line italic">marie</span>
+        <span class="chop-line">allan</span>
+      </span>
+    </span>
+  </a>
+  <nav class="nav-links">
+    {items.map((item) => (
+      <a href={item.href} class={`nav-link ${isActive(item.href) ? 'active' : ''}`}>{item.label}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
+    height: var(--nav-height);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--page-padding-x);
+  }
+  @media (max-width: 600px) {
+    .nav { padding: 0 var(--page-padding-x-sm); }
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+  }
+</style>

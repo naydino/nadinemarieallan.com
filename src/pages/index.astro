@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="home">
+  <section class="hero">
+    <div class="portrait-col">
+      <img
+        src="/images/portrait-placeholder.jpg"
+        alt="portrait of nadine marie allan"
+        class="greyscale-locked portrait"
+      />
+    </div>
+    <div class="text-col">
+      <h1 class="name-display">nadine marie allan</h1>
+      <hr class="type-divider" />
+      <p class="display-md hero-statement">
+        I make work at the intersection of physical material and computation — interested in the gap between a thing and how systems read, translate, or transform it.
+      </p>
+      <p class="body-text bio">
+        Artist and creative technologist based in Lisbon. Currently completing an MA in Creative Computing and AI at IADE – Universidade Europeia, with a BFA from UCLA. My practice spans interactive installation, generative media, video, sound, and community-based work.
+      </p>
+      <div class="links-row">
+        <a class="cta-link" href="/work">view work →</a>
+        <a class="cta-link" href="/about">about</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    max-width: var(--site-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-6);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .portrait-col {
+    border-right: 1px solid var(--border);
+    padding-right: var(--space-4);
+  }
+  .portrait {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background: var(--surface-2);
+  }
+  .text-col {
+    padding: var(--space-1) 0 0 var(--space-4);
+  }
+  .bio {
+    max-width: 480px;
+    margin-top: var(--space-3);
+  }
+  .hero-statement {
+    margin-top: var(--space-2);
+  }
+  .links-row {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-5);
+    }
+    .portrait-col {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding-right: 0;
+      padding-bottom: var(--space-3);
+      max-width: 220px;
+    }
+    .text-col {
+      padding: var(--space-3) 0 0 0;
+    }
+  }
+</style>
