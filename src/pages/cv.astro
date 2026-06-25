@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+function parseEntry(text: string): { year?: string; html: string } {
+  const m = text.match(/^(\d{4}) — ([\s\S]*)/);
+  const year = m ? m[1] : undefined;
+  const rest = m ? m[2] : text;
+  const html = rest.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  return { year, html };
+}
+
+const sections = [
+  {
+    title: 'education',
+    entries: [
+      'BFA, Studio Art / Media Installation — UCLA, 2007–2011',
+      'MA, Creative Computing and AI — IADE – Universidade Europeia, Lisbon, 2025–2027 (in progress)',
+    ],
+  },
+  {
+    title: 'research',
+    entries: [
+      '2025 — UNIDCOM BII Research Scholarship, IADE',
+      'Funding *Seen By Something*, public exhibition September 2026',
+    ],
+  },
+  {
+    title: 'works in development',
+    entries: [
+      '*Seen By Something* — AI-mediated interactive installation, September 2026',
+      '*POP POP* — Special effects (w/Dream Video Division), feature film dir. Dylan Stephen Levers, in post-production',
+    ],
+  },
+  {
+    title: 'works',
+    entries: [
+      '*The Oracle That Wears Us* — Interactive AI installation, IADE 2025',
+    ],
+  },
+  {
+    title: 'exhibitions & screenings',
+    entries: [
+      '2025 — Cucalorus Film Festival, Wilmington NC — *Snakeskin Jacket* (w/Dream Video Division)',
+      '2024 — Toronto International Film Festival — *KOOL WORLD* (w/Dream Video Division)',
+      '2023 — Fantastic Fest, Austin TX — Closing night video installation (w/Dream Video Division)',
+      '2023 — Alamo Drafthouse, Los Angeles — *Magnolia Remastered* (w/Dream Video Division)',
+      '2022 — Diverse Voices of Her Words — Progress Gallery / Sasse Museum / dA Center for the Arts, Pomona CA',
+      '2022 — Philadelphia Film Festival — Retrospective screening (w/Dream Video Division)',
+      '2022 — Fantastic Fest, Austin TX — *Metropolis Unrestored*, closing night building wrap (w/Dream Video Division)',
+      '2022 — Toronto International Film Festival — *Midnight Dankness* (w/Dream Video Division)',
+      '2022 — Locarno International Film Festival — Avant-garde selections (w/Dream Video Division)',
+      '2022 — FuBaR Glitch Arts Festival, Zagreb — *The Wizard of Ozzz* (w/Dream Video Division)',
+      '2022 — Two Bit Circus, Los Angeles — *Cayman Islands Public Access Television* (w/Dream Video Division)',
+      '2022 — Overlook Film Festival, New Orleans — *Nosfera2* (w/Dream Video Division)',
+      '2022 — Coaxial Arts, Los Angeles — *Shrek Da Halls* (w/Dream Video Division)',
+      '2021 — Cucalorus Film Festival, Wilmington NC — *#0000FF Velvet* (w/Racer Trash)',
+      '2021 — Digital Debris Gallery, Los Angeles — Live AV performance',
+      '2021 — Vidicon Video Art Festival, Wellington NZ / Berlin — *Purple Rain Movie Remix* (w/Dream Video Division)',
+      '2017 — Hive Gallery, Los Angeles — Group exhibition',
+      '2015 — Brooklyn Fireproof, Brooklyn NY — Co-creator and curator, Brooklyn First Fridays',
+    ],
+  },
+  {
+    title: 'installations',
+    entries: [
+      '2022 — Overlook Film Festival — AR filters and display fabrication (w/Dream Video Division)',
+      '2022 — Pony Farm Residency, Northern California — Community natural dye workshop; audio-reactive projection mapping performance',
+      '2021 — Cucalorus Film Festival — *#0000FF Velvet* — Projection mapped installation, audio-reactive; indigo robe tent (w/Racer Trash)',
+      '2021 — Digital Debris Gallery — Audio-reactive projection mapping performance',
+    ],
+  },
+  {
+    title: 'residencies',
+    entries: [
+      '2022 — Pony Farm, Northern California',
+    ],
+  },
+  {
+    title: 'talks & panels',
+    entries: [
+      '2022 — Philadelphia Film Festival — "An Evening With Dream Video Division" (w/Dream Video Division)',
+    ],
+  },
+];
+---
+
+<BaseLayout title="cv">
+  <section class="cv">
+    <div class="cv-head">
+      <span class="eyebrow">curriculum vitae</span>
+      <div class="name-display">nadine marie allan</div>
+      <a class="cta-link download-link" href="/files/nadine-marie-allan-cv.pdf">download cv ↓</a>
+    </div>
+
+    <hr class="rule" />
+
+    {sections.map((section) => (
+      <div class="cv-section">
+        <h2 class="eyebrow section-title">{section.title}</h2>
+        <div class="entries">
+          {section.entries.map((entry) => {
+            const parsed = parseEntry(entry);
+            return (
+              <div class="entry">
+                {parsed.year && <span class="year-label entry-year">{parsed.year}</span>}
+                <span set:html={parsed.html} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .cv {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+  .cv-head {
+    margin-bottom: var(--space-4);
+  }
+  .name-display {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xl);
+    font-weight: var(--w-light);
+    text-transform: lowercase;
+    color: var(--ink);
+    line-height: 1.1;
+    margin: var(--space-2) 0 var(--space-3);
+  }
+  .download-link {
+    display: inline-block;
+  }
+
+  .cv-section {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  .section-title {
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+  .entries {
+    display: flex;
+    flex-direction: column;
+  }
+  .entry {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+  .entry-year {
+    display: inline;
+    margin-right: 6px;
+  }
+  .entry em {
+    font-style: italic;
+    font-weight: var(--w-light);
+  }
+
+  @media (max-width: 600px) {
+    .cv {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+  }
+</style>

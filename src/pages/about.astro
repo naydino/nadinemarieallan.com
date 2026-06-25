@@ -1,78 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const cv = [
-  {
-    title: 'Education',
-    entries: [
-      ['BFA, Studio Art / Media Installation', 'University of California Los Angeles — 2007–2011'],
-      ['MA, Creative Computing and Artificial Intelligence', 'IADE – Universidade Europeia, Lisbon — 2025–2027 (in progress)'],
-    ],
-  },
-  {
-    title: 'Research',
-    entries: [
-      ['UNIDCOM BII Research Scholarship', 'IADE – Universidade Europeia — 2025', 'Funding active research project Seen By Something'],
-    ],
-  },
-  {
-    title: 'Works in Development',
-    entries: [
-      ['Seen By Something', 'AI-mediated interactive installation', 'Public exhibition September 2026 · UNIDCOM/IADE funded'],
-      ['POP POP', 'Special effects (w/Dream Video Division)', 'Feature film, dir. Dylan Stephen Levers · In post-production'],
-    ],
-  },
-  {
-    title: 'Works',
-    entries: [
-      ['The Oracle That Wears Us', 'Interactive AI installation · IADE, 2025'],
-    ],
-  },
-  {
-    title: 'Exhibitions & Screenings',
-    entries: [
-      ['Cucalorus Film Festival, Wilmington NC · 2025', '(w/Dream Video Division) Snakeskin Jacket'],
-      ['Toronto International Film Festival · 2024', '(w/Dream Video Division) KOOL WORLD'],
-      ['Fantastic Fest, Austin TX · 2023', '(w/Dream Video Division) Closing night video installation'],
-      ['Alamo Drafthouse, Los Angeles · 2023', '(w/Dream Video Division) Magnolia Remastered'],
-      ['Diverse Voices of Her Words · 2022', 'Progress Gallery / Sasse Museum of Art / dA Center for the Arts, Pomona CA'],
-      ['Philadelphia Film Festival · 2022', '(w/Dream Video Division) Retrospective screening'],
-      ['Fantastic Fest, Austin TX · 2022', '(w/Dream Video Division) Metropolis Unrestored, closing night, building wrap'],
-      ['Toronto International Film Festival · 2022', '(w/Dream Video Division) Midnight Dankness'],
-      ['Locarno International Film Festival · 2022', '(w/Dream Video Division) Avant-garde selections'],
-      ['FuBaR Glitch Arts Festival, Zagreb · 2022', '(w/Dream Video Division) The Wizard of Ozzz'],
-      ['Two Bit Circus, Los Angeles · 2022', '(w/Dream Video Division) Cayman Islands Public Access Television'],
-      ['Overlook Film Festival, New Orleans · 2022', '(w/Dream Video Division) Nosfera2'],
-      ['Coaxial Arts, Los Angeles · 2022', '(w/Dream Video Division) Shrek Da Halls'],
-      ['Cucalorus Film Festival, Wilmington NC · 2021', '(w/Racer Trash) #0000FF Velvet'],
-      ['Digital Debris Gallery, Los Angeles · 2021', 'Live AV performance'],
-      ['Vidicon Video Art Festival, Wellington NZ / Berlin · 2021', '(w/Dream Video Division) Purple Rain Movie Remix'],
-      ['Hive Gallery, Los Angeles · 2017', 'Group exhibition'],
-      ['Brooklyn Fireproof, Brooklyn NY · 2015', 'Co-creator and curator, Brooklyn First Fridays'],
-    ],
-  },
-  {
-    title: 'Installations',
-    entries: [
-      ['Overlook Film Festival, New Orleans · 2022', 'AR filters and display fabrication (w/Dream Video Division)'],
-      ['Cucalorus Film Festival, Wilmington NC · 2021', 'Projection mapped installation, audio-reactive; indigo robe tent (w/Racer Trash)'],
-      ['Digital Debris Gallery, Los Angeles · 2021', 'Audio-reactive projection mapping performance'],
-      ['Pony Farm Residency, Northern California · 2022', 'Community natural dye workshop; site-specific audio-reactive projection mapping performance'],
-    ],
-  },
-  {
-    title: 'Residencies',
-    entries: [
-      ['Pony Farm, Northern California · 2022'],
-    ],
-  },
-  {
-    title: 'Talks & Panels',
-    entries: [
-      ['Philadelphia Film Festival · 2022', '(w/Dream Video Division) "An Evening With Dream Video Division"'],
-    ],
-  },
-];
 ---
 
 <BaseLayout title="about">
@@ -80,7 +7,7 @@ const cv = [
     <div class="grid">
       <div class="portrait-col">
         <img
-          src="/images/portrait-placeholder.jpg"
+          src="/images/portrait/me-low.jpg"
           alt="portrait of nadine marie allan"
           class="greyscale-locked portrait"
         />
@@ -91,28 +18,16 @@ const cv = [
         <p class="display-md intro">
           My practice moves between installation, video, sound, and community-based work. The thread connecting all of it: the gap between a thing and how systems — computational, social, ecological — read, translate, or transform it.
         </p>
-        <p class="body-md">
+        <p class="body-md para">
           I came to this through painting and material process, then through curation, then through generative media and code. Now I'm working at the intersection of AI and interactive installation, pursuing an MA in Creative Computing and AI at IADE – Universidade Europeia in Lisbon.
         </p>
-        <p class="body-md">
+        <p class="body-md para">
           Previously based in Los Angeles and New York. BFA from UCLA.
         </p>
 
-        <div class="cv">
-          {cv.map((section) => (
-            <div class="cv-section">
-              <h2 class="eyebrow cv-section-title">{section.title}</h2>
-              <div class="cv-entries">
-                {section.entries.map((entry) => (
-                  <div class="cv-entry">
-                    {entry.map((line, i) => (
-                      <div class={i === 0 ? 'cv-line-title' : 'cv-line-sub'}>{line}</div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div class="cta-row">
+          <a class="cta-link" href="/cv">→ cv</a>
+          <a class="cta-link" href="/files/nadine-marie-allan-cv.pdf">download cv ↓</a>
         </div>
       </div>
     </div>
@@ -147,42 +62,13 @@ const cv = [
   .intro {
     margin-top: var(--space-4);
   }
-  .body-md {
+  .para {
     margin-top: var(--space-4);
   }
-
-  .cv-section-title {
-    margin-top: var(--space-7);
-    display: block;
-  }
-  .cv-section:first-child .cv-section-title {
-    margin-top: var(--space-6);
-  }
-  .cv-entries {
-    margin-top: var(--space-3);
-    border-top: 1px solid var(--border);
-  }
-  .cv-entry {
-    padding: var(--space-2) 0;
-    border-bottom: 1px solid var(--border);
+  .cta-row {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .cv-line-title {
-    font-family: var(--font-mono);
-    font-style: italic;
-    font-weight: var(--w-light);
-    font-size: 15px;
-    line-height: 1.5;
-    color: var(--ink);
-  }
-  .cv-line-sub {
-    font-family: var(--font-mono);
-    font-weight: var(--w-light);
-    font-size: var(--text-sm);
-    line-height: 1.7;
-    color: var(--mid);
+    gap: var(--space-3);
+    margin-top: var(--space-3);
   }
 
   @media (max-width: 600px) {

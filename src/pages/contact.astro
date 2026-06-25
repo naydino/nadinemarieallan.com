@@ -6,7 +6,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="contact">
     <span class="eyebrow">contact</span>
     <p class="body-md line">for collaboration, commissions, or enquiries:</p>
-    <a class="cta-link email" href="mailto:hello@nadinemarieallan.com">hello@nadinemarieallan.com</a>
+    <a class="cta-link email" href="mailto:nadinemarieallan@gmail.com">nadinemarieallan@gmail.com</a>
+
+    <div class="elsewhere">
+      <span class="eyebrow">elsewhere</span>
+      <div class="social-links">
+        <a class="cta-link" href="https://github.com/naydino" target="_blank" rel="noopener noreferrer">github → naydino</a>
+        <a class="cta-link" href="https://www.instagram.com/naydino" target="_blank" rel="noopener noreferrer">instagram → @naydino</a>
+        <a class="cta-link" href="https://www.linkedin.com/in/nadinemarie/" target="_blank" rel="noopener noreferrer">linkedin → nadinemarie</a>
+      </div>
+    </div>
   </section>
 </BaseLayout>
 
@@ -23,6 +32,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: inline-block;
     margin-top: var(--space-4);
     font-size: var(--text-md);
+  }
+  .elsewhere {
+    margin-top: var(--space-6);
+  }
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
   }
 
   @media (max-width: 600px) {

@@ -1,62 +1,92 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const featured = [
+  {
+    title: 'The Oracle That Wears Us',
+    descriptor: 'interactive AI installation · 2025',
+    image: '/images/oracle/hero.jpg',
+    href: '#',
+  },
+  {
+    title: '#0000FF Velvet',
+    descriptor: 'projection mapping, installation · 2021',
+    image: '/images/velvet/hero.jpg',
+    href: '#',
+  },
+  {
+    title: 'Snakeskin Jacket',
+    descriptor: 'interactive environment · 2025',
+    image: '/images/snakeskin/hero.jpg',
+    href: '#',
+  },
+];
 ---
 
 <BaseLayout title="home">
   <section class="hero">
-    <div class="portrait-col">
-      <img
-        src="/images/portrait-placeholder.jpg"
-        alt="portrait of nadine marie allan"
-        class="greyscale-locked portrait"
-      />
+    <span class="eyebrow">artist & creative technologist — lisbon</span>
+    <h1 class="display-xl hero-statement">
+      What does a system do to a thing when it tries to understand it?
+    </h1>
+    <hr class="type-divider" />
+    <p class="bio">
+      Based in Lisbon, completing an MA in Creative Computing and AI at IADE – Universidade Europeia. I work in installation, generative media, video, and sound — tracing what gets lost, added, or transformed in translation.
+    </p>
+    <div class="links-row">
+      <a class="cta-link" href="/work">view work →</a>
+      <a class="cta-link" href="/about">about</a>
     </div>
-    <div class="text-col">
-      <h1 class="name-display">nadine marie allan</h1>
-      <hr class="type-divider" />
-      <p class="display-md hero-statement">
-        I make work at the intersection of physical material and computation — interested in the gap between a thing and how systems read, translate, or transform it.
-      </p>
-      <p class="body-text bio">
-        Artist and creative technologist based in Lisbon. Currently completing an MA in Creative Computing and AI at IADE – Universidade Europeia, with a BFA from UCLA. My practice spans interactive installation, generative media, video, sound, and community-based work.
-      </p>
-      <div class="links-row">
-        <a class="cta-link" href="/work">view work →</a>
-        <a class="cta-link" href="/about">about</a>
-      </div>
+  </section>
+
+  <section class="featured">
+    <div class="featured-head">
+      <hr class="rule" />
+      <span class="eyebrow">selected work</span>
+    </div>
+    <div class="featured-grid">
+      {featured.map((project) => (
+        <a href={project.href} class="project-cell">
+          <div class="cell-image">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="cell-img"
+              onerror="this.style.display='none'"
+            />
+          </div>
+          <div class="cell-title display-md">{project.title}</div>
+          <div class="cell-descriptor">{project.descriptor}</div>
+        </a>
+      ))}
+    </div>
+    <div class="featured-cta">
+      <a class="cta-link" href="/work">view all work →</a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .hero {
-    max-width: var(--site-max);
+    max-width: var(--content-max);
     margin: 0 auto;
-    padding: var(--space-6) var(--page-padding-x) var(--space-6);
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .portrait-col {
-    border-right: 1px solid var(--border);
-    padding-right: var(--space-4);
-  }
-  .portrait {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    background: var(--surface-2);
-  }
-  .text-col {
-    padding: var(--space-1) 0 0 var(--space-4);
-  }
-  .bio {
-    max-width: 480px;
-    margin-top: var(--space-3);
+    padding: var(--space-7) var(--page-padding-x) var(--space-6);
   }
   .hero-statement {
-    margin-top: var(--space-2);
+    margin-top: var(--space-3);
+    max-width: 640px;
+  }
+  .type-divider {
+    margin: var(--space-3) 0;
+  }
+  .bio {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    max-width: 560px;
+    margin: 0;
   }
   .links-row {
     display: flex;
@@ -64,20 +94,78 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-top: var(--space-4);
   }
 
+  .featured {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--page-padding-x) var(--space-7);
+  }
+  .featured-head {
+    margin-bottom: var(--space-4);
+  }
+  .featured-head .rule {
+    margin-bottom: var(--space-3);
+  }
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+  }
+  .project-cell {
+    display: block;
+    text-decoration: none;
+    transition: transform var(--transition-base);
+  }
+  .project-cell:hover {
+    transform: translateY(-3px);
+  }
+  .cell-image {
+    background: var(--surface);
+    overflow: hidden;
+    margin-bottom: var(--space-2);
+    min-height: 180px;
+  }
+  .cell-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter var(--transition-slow);
+  }
+  .project-cell:hover .cell-img {
+    filter: grayscale(0%);
+  }
+  .cell-title {
+    transition: color var(--transition-base);
+  }
+  .project-cell:hover .cell-title {
+    color: var(--gold);
+  }
+  .cell-descriptor {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: var(--w-light);
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .featured-cta {
+    text-align: right;
+    margin-top: var(--space-4);
+  }
+
+  @media (max-width: 768px) {
+    .featured-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
   @media (max-width: 600px) {
     .hero {
+      padding: var(--space-6) var(--page-padding-x-sm) var(--space-5);
+    }
+    .featured {
+      padding: 0 var(--page-padding-x-sm) var(--space-6);
+    }
+    .featured-grid {
       grid-template-columns: 1fr;
-      padding: var(--space-5) var(--page-padding-x-sm) var(--space-5);
-    }
-    .portrait-col {
-      border-right: none;
-      border-bottom: 1px solid var(--border);
-      padding-right: 0;
-      padding-bottom: var(--space-3);
-      max-width: 220px;
-    }
-    .text-col {
-      padding: var(--space-3) 0 0 0;
     }
   }
 </style>
