@@ -9,8 +9,7 @@ const items = [
 ];
 
 function isActive(href: string) {
-  if (href === '/work') return path === '/' || path.startsWith('/work');
-  return path.startsWith(href);
+  return path === href || path.startsWith(href + '/');
 }
 ---
 

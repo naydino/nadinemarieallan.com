@@ -1,0 +1,310 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="The Oracle That Wears Us" description="An embodied AI installation structured as a ritual encounter — IADE, 2025">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">installation · 2025</span>
+      <h1 class="display-xl project-title">The Oracle That Wears Us</h1>
+    </header>
+
+    <div class="hero-image">
+      <img
+        src="/images/oracle/hero.jpg"
+        alt="The Oracle That Wears Us installation"
+        class="greyscale hero-img"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <div class="project-body">
+
+      <p class="lead">
+        Oracle is an embodied AI installation structured as a ritual encounter. A visitor approaches a portrait screen and speaks across four turns of directed conversation — the system reads the emotional texture of their voice and gradually transforms their image into the oracle itself. At the end, a CNC plotter inscribes a symbolic mark onto a collective cloth and a thermal printer produces a receipt: a document of what the machine perceived.
+      </p>
+
+      <hr class="type-divider" />
+
+      <p>
+        Oracle does not produce a single reading of the visitor. It continuously translates them across multiple modalities simultaneously — voice, face, language, hesitation, named objects, and emotional tone. No output is treated as the "correct" version of the visitor. The same conversation produces a transformed portrait, an emotional classification, a symbolic inscription, a printed receipt, a persistent archive entry, and a collective trace on cloth.
+      </p>
+
+      <p>
+        The installation asks a simple question: what does it feel like to be interpreted by a system that cannot explain itself? The design question evolved through usability testing — from "who is the author of what Oracle produces?" to "how am I being seen?" to the current center: "do I recognise myself in what the system produced?" This shift from authorship to recognition became the conceptual core.
+      </p>
+
+      <div class="section-divider">
+        <span class="eyebrow">the encounter</span>
+      </div>
+
+      <p>
+        The interaction unfolds across nine designed states. The visitor does not navigate an interface — the oracle controls the progression. The state machine functions simultaneously as information architecture, pacing structure, ritual choreography, and interaction logic.
+      </p>
+
+      <div class="state-flow">
+        <span class="state-node">IDLE</span>
+        <span class="state-arrow">→</span>
+        <span class="state-node">AWAKENING</span>
+        <span class="state-arrow">→</span>
+        <span class="state-node">CAPTURE</span>
+        <span class="state-arrow">→</span>
+        <span class="state-node">LISTENING</span>
+        <span class="state-arrow">→</span>
+        <span class="state-node">PROCESSING</span>
+        <span class="state-arrow">→</span>
+        <span class="state-node">SPEAKING</span>
+        <span class="state-arrow">→</span>
+        <span class="state-node">INSCRIBING</span>
+        <span class="state-arrow">→</span>
+        <span class="state-node">RECEIPT</span>
+        <span class="state-arrow">→</span>
+        <span class="state-node">RESET</span>
+      </div>
+
+      <p>
+        In the IDLE state the oracle waits — a slow arc-spinner cycles through eight symbolic marks while the screen invites participation. In AWAKENING the visitor is positioned physically before the system: the oracle first positions the body, only then begins the ritual. Across four LISTENING turns the system reads voice, face, language, and hesitation simultaneously. INSCRIBING drives the plotter arm silently across the collective cloth. In REFLECTION the visitor holds the receipt alone.
+      </p>
+
+      <div class="section-divider">
+        <span class="eyebrow">technical pipeline</span>
+      </div>
+
+      <p>
+        Oracle is not a single AI system. It is a chain of interpretive systems, each one translating the visitor into a different form. The pipeline runs in TouchDesigner, connecting speech recognition, language generation, image generation, voice synthesis, and CNC output in a single continuous flow.
+      </p>
+
+      <div class="pipeline">
+        <div class="pipeline-group">input capture</div>
+        <div class="pipeline-row">camera (face) · microphone (voice) · speech-to-text</div>
+        <div class="pipeline-group">interpretation</div>
+        <div class="pipeline-row">LLM — generates oracle response + emotional classification + symbol parameters</div>
+        <div class="pipeline-group">output</div>
+        <div class="pipeline-row">image generation — transformed portrait · voice synthesis — oracle speech</div>
+        <div class="pipeline-row">CNC plotter — symbolic mark on cloth · thermal printer — session receipt</div>
+        <div class="pipeline-row">generative projection — ambient environment (Dmitrii Kazantsev)</div>
+      </div>
+
+      <div class="section-divider">
+        <span class="eyebrow">components</span>
+      </div>
+
+      <div class="components-list">
+        <div class="component-row">
+          <span class="component-label">portrait screen</span>
+          <span class="component-value">Arzopa 720×1280 portrait monitor</span>
+        </div>
+        <div class="component-row">
+          <span class="component-label">plotter</span>
+          <span class="component-value">CNC arm — symbolic inscription on hanging cloth</span>
+        </div>
+        <div class="component-row">
+          <span class="component-label">printer</span>
+          <span class="component-value">thermal — session receipt</span>
+        </div>
+        <div class="component-row">
+          <span class="component-label">cloth</span>
+          <span class="component-value">collective inscription surface — accumulates across all visitors</span>
+        </div>
+        <div class="component-row">
+          <span class="component-label">projection</span>
+          <span class="component-value">ambient generative environment — fills the room</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-row">
+        <span class="meta-label eyebrow">year</span>
+        <span class="meta-value">2025</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">medium</span>
+        <span class="meta-value">interactive AI installation</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">venue</span>
+        <span class="meta-value">IADE – Universidade Europeia, Lisbon</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">tools</span>
+        <span class="meta-value">TouchDesigner · Python · STT · LLM · image generation · TTS · CNC · thermal printing</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">collaborators</span>
+        <span class="meta-value">Andrey Dyakov (CNC engineering) · Dmitrii Kazantsev (generative projection)</span>
+      </div>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .hero-image {
+    background: var(--surface);
+    margin-bottom: var(--space-6);
+    min-height: 340px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-4);
+  }
+  .type-divider {
+    margin: var(--space-4) 0;
+  }
+  p {
+    margin-bottom: var(--space-3);
+  }
+
+  .section-divider {
+    margin: var(--space-5) 0 var(--space-3);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+  }
+
+  .state-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: var(--space-3) var(--space-3);
+    background: var(--surface);
+    border-left: 2px solid var(--gold);
+    margin: var(--space-3) 0;
+  }
+  .state-node {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: var(--w-regular);
+    letter-spacing: var(--ls-tight);
+    color: var(--ink);
+  }
+  .state-arrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    margin: 0 2px;
+  }
+
+  .pipeline {
+    background: var(--surface);
+    border-left: 2px solid var(--gold);
+    padding: var(--space-3) var(--space-3);
+    margin: var(--space-3) 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+  .pipeline-group {
+    font-size: 11px;
+    font-weight: var(--w-regular);
+    letter-spacing: var(--ls-widest);
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: var(--space-3);
+    margin-bottom: 4px;
+    display: block;
+  }
+  .pipeline-group:first-child {
+    margin-top: 0;
+  }
+  .pipeline-row {
+    display: block;
+  }
+
+  .components-list {
+    margin: var(--space-3) 0;
+    border-top: 1px solid var(--border);
+  }
+  .component-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: var(--w-light);
+  }
+  .component-label {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: var(--w-regular);
+    letter-spacing: var(--ls-tight);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .component-value {
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+
+  .project-meta {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-4);
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .meta-label {
+    color: var(--gold);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .meta-value {
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+    .state-flow {
+      gap: 2px;
+    }
+    .component-row,
+    .meta-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+</style>
