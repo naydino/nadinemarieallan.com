@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="The Oracle That Wears Us" description="An embodied AI installation structured as a ritual encounter — IADE, 2025">
+<BaseLayout title="The Oracle That Wears Us" description="An AI installation that reads the emotional residue in a visitor's voice and inscribes a unique symbolic mark onto a collective cloth.">
   <article class="project">
 
     <header class="project-header">
@@ -12,9 +12,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
     <div class="hero-image">
       <img
-        src="/images/oracle/hero.jpg"
-        alt="The Oracle That Wears Us installation"
-        class="greyscale hero-img"
+        src="/images/oracle/oracle_hero_installation.png"
+        alt="The Oracle That Wears Us — installation overview"
+        class="hero-img"
         onerror="this.style.display='none'"
       />
     </div>
@@ -22,25 +22,50 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="project-body">
 
       <p class="lead">
-        Oracle is an embodied AI installation structured as a ritual encounter. A visitor approaches a portrait screen and speaks across four turns of directed conversation — the system reads the emotional texture of their voice and gradually transforms their image into the oracle itself. At the end, a CNC plotter inscribes a symbolic mark onto a collective cloth and a thermal printer produces a receipt: a document of what the machine perceived.
+        A visitor approaches a portrait screen in a darkened room. They press a button. Over four turns of directed conversation, the system listens — not for what they say but for how they say it: the hesitation before a word, the flatness or fracture in a vowel, the acoustic texture of carrying something. At the end, a CNC plotter draws a symbolic mark onto a shared cloth. A thermal printer produces a receipt. The encounter ends; the mark remains.
+      </p>
+
+      <p class="lead-sub">
+        <em>The Oracle That Wears Us</em> is an interactive AI installation structured as a ritual encounter. It asks what it feels like to be interpreted by a system that cannot explain itself.
       </p>
 
       <hr class="type-divider" />
 
       <p>
-        Oracle does not produce a single reading of the visitor. It continuously translates them across multiple modalities simultaneously — voice, face, language, hesitation, named objects, and emotional tone. No output is treated as the "correct" version of the visitor. The same conversation produces a transformed portrait, an emotional classification, a symbolic inscription, a printed receipt, a persistent archive entry, and a collective trace on cloth.
+        The work began as a technical prototype in February 2026 — a TouchDesigner pipeline connecting speech recognition, language generation, and voice synthesis. I led the AI pipeline, the state machine architecture, the visual system, the UX research, and the prompt design. Andrey Dyakov built the physical installation: a reverse-engineered NEJE CNC plotter, a Firebase pipeline, and a Flutter web archive. Dmitrii Kazantsev designed the oracle figure and the ambient generative sound layer.
       </p>
 
       <p>
-        The installation asks a simple question: what does it feel like to be interpreted by a system that cannot explain itself? The design question evolved through usability testing — from "who is the author of what Oracle produces?" to "how am I being seen?" to the current center: "do I recognise myself in what the system produced?" This shift from authorship to recognition became the conceptual core.
+        The conceptual problem that held all of it together: AI systems are interpretive, not neutral. They don't reflect a visitor back to themselves — they translate the visitor through their own constraints, training data, and architectural assumptions. Oracle makes that translation visible. Every output is a reading, not a recording. Every mark is the system's interpretation, not the visitor's truth.
       </p>
+
+      <div class="section-divider">
+        <span class="eyebrow">the AI pipeline</span>
+      </div>
+
+      <p>
+        The full local pipeline: Voice Activity Detection identifies when the visitor stops speaking → Vosk transcribes the audio → Gemma3:4b (running locally via Ollama) generates the oracle's response and extracts a named object from the visitor's words → KittenTTS synthesises the oracle's voice → a custom ONNX emotion regression model trained on the RAVDESS dataset analyses acoustic features and classifies the emotional texture of how the visitor spoke → that classification maps to one of eight symbolic categories drawn from the historical Hobo sign lexicon → the symbol is rendered as SVG with geometric parameters unique to this session → the CNC plotter draws it → a thermal receipt prints automatically via ESP32.
+      </p>
+
+      <p>
+        The single external API call is FLUX img2img on Replicate, which transforms the visitor's captured portrait into the oracle's aesthetic register. The prompt that works: face preservation as the primary constraint. The transformation is only meaningful if the visitor can still recognise themselves in it.
+      </p>
+
+      <div class="project-image">
+        <img
+          src="/images/oracle/oracle_pipeline_diagram.svg"
+          alt="Oracle AI pipeline diagram"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
 
       <div class="section-divider">
         <span class="eyebrow">the encounter</span>
       </div>
 
       <p>
-        The interaction unfolds across nine designed states. The visitor does not navigate an interface — the oracle controls the progression. The state machine functions simultaneously as information architecture, pacing structure, ritual choreography, and interaction logic.
+        The interaction runs through nine designed states — IDLE through RESET — without menus, navigation, or choices. The visitor does not control the progression. The oracle does.
       </p>
 
       <div class="state-flow">
@@ -64,54 +89,177 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
 
       <p>
-        In the IDLE state the oracle waits — a slow arc-spinner cycles through eight symbolic marks while the screen invites participation. In AWAKENING the visitor is positioned physically before the system: the oracle first positions the body, only then begins the ritual. Across four LISTENING turns the system reads voice, face, language, and hesitation simultaneously. INSCRIBING drives the plotter arm silently across the collective cloth. In REFLECTION the visitor holds the receipt alone.
+        Early testing revealed something that shifted the whole frame: visitors were not asking who authored the output. They were asking whether the system understood them. That question — <em>am I being seen?</em> — displaced the design problem entirely. The work stopped being about authorship and started being about recognition, pacing, and the legibility of machine perception.
       </p>
 
+      <p>
+        Four rounds of usability testing, twelve design iterations. Three findings that shaped everything:
+      </p>
+
+      <p>
+        The entry was unclear. A physical button resolved this — one deliberate action, one moment of consent. But even after pressing the button, visitors were trying to orient their body in space, understand the premise, and process the opening provocation simultaneously. The AWAKENING state was split into two timed beats: first the body is positioned, then — only once the visitor is settled — the ritual begins.
+      </p>
+
+      <p>
+        Latency was being read as failure. The local AI pipeline carries 2–2.5 seconds of irreducible delay per turn. Hiding that delay wasn't possible. Making it legible was. The PROCESSING state reframes waiting as deliberation. The arc spinner — eight Hobo-derived marks cycling slowly — signals that the system is thinking, not broken.
+      </p>
+
+      <p>
+        The listening needed to be visible without being instructional. A ring surrounding the oracle figure responds directly to live microphone RMS: it swells when the visitor speaks, contracts in silence. The system shows it is listening. No text label states it.
+      </p>
+
+      <div class="project-image">
+        <img
+          src="/images/oracle/oracle_listening_ring_diagram.svg"
+          alt="Listening ring diagram — microphone RMS visualization"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
       <div class="section-divider">
-        <span class="eyebrow">technical pipeline</span>
+        <span class="eyebrow">the possession arc</span>
       </div>
 
       <p>
-        Oracle is not a single AI system. It is a chain of interpretive systems, each one translating the visitor into a different form. The pipeline runs in TouchDesigner, connecting speech recognition, language generation, image generation, voice synthesis, and CNC output in a single continuous flow.
+        Each conversational turn increases the opacity of a FLUX-transformed portrait of the visitor, overlaid on the oracle figure. The progression functions simultaneously as emotional escalation, progress indicator, and narrative accumulation. Turn 0: the oracle is fully present. Turn 4: the visitor occupies the oracle's place. No loading bar. No numbered steps. Only the slow convergence of two figures.
       </p>
 
-      <div class="pipeline">
-        <div class="pipeline-group">input capture</div>
-        <div class="pipeline-row">camera (face) · microphone (voice) · speech-to-text</div>
-        <div class="pipeline-group">interpretation</div>
-        <div class="pipeline-row">LLM — generates oracle response + emotional classification + symbol parameters</div>
-        <div class="pipeline-group">output</div>
-        <div class="pipeline-row">image generation — transformed portrait · voice synthesis — oracle speech</div>
-        <div class="pipeline-row">CNC plotter — symbolic mark on cloth · thermal printer — session receipt</div>
-        <div class="pipeline-row">generative projection — ambient environment (Dmitrii Kazantsev)</div>
+      <p>
+        The oracle does not possess the visitor. The visitor possesses the oracle.
+      </p>
+
+      <div class="possession-strip">
+        <div class="possession-step">
+          <img src="/images/oracle/round4_possession_0.png" alt="Possession arc — turn 0" class="possession-img" onerror="this.parentElement.style.display='none'" />
+          <span class="caption">turn 0</span>
+        </div>
+        <div class="possession-step">
+          <img src="/images/oracle/round4_possession_25.png" alt="Possession arc — turn 1" class="possession-img" onerror="this.parentElement.style.display='none'" />
+          <span class="caption">turn 1</span>
+        </div>
+        <div class="possession-step">
+          <img src="/images/oracle/round4_possession_50.png" alt="Possession arc — turn 2" class="possession-img" onerror="this.parentElement.style.display='none'" />
+          <span class="caption">turn 2</span>
+        </div>
+        <div class="possession-step">
+          <img src="/images/oracle/round4_possession_100.png" alt="Possession arc — turn 4" class="possession-img" onerror="this.parentElement.style.display='none'" />
+          <span class="caption">turn 4</span>
+        </div>
       </div>
 
       <div class="section-divider">
-        <span class="eyebrow">components</span>
+        <span class="eyebrow">the symbolic language</span>
       </div>
 
-      <div class="components-list">
-        <div class="component-row">
-          <span class="component-label">portrait screen</span>
-          <span class="component-value">Arzopa 720×1280 portrait monitor</span>
+      <p>
+        The Hobo sign system: a pre-digital symbolic communication network used by itinerant workers across early twentieth-century America — marks scratched onto fence posts and barn doors, information passed between people with no shared verbal language, moving constantly, reading the world through material traces.
+      </p>
+
+      <p>
+        The ONNX emotion model maps acoustic features into eight emotional categories, each assigned to one Hobo mark: The Thorns (anger), The Sky Eye (calm), The Shriek (surprise), The Pitiful Story (sadness), The Kind Soul (happy), The Watcher (fear), The Bitter Root (disgust), The Horizon (neutral). The model outputs geometric parameters — not a fixed template — so two visitors receiving the same emotional category still receive materially different marks. The machine never reproduces a symbol identically.
+      </p>
+
+      <div class="project-image">
+        <img
+          src="/images/oracle/oracle_hobo_lexicon.png"
+          alt="Oracle Hobo sign lexicon — eight emotional categories"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <div class="section-divider">
+        <span class="eyebrow">the cloth</span>
+      </div>
+
+      <p>
+        The plotter draws each visitor's mark onto a shared cloth. No visitor controls the final composition. The work accumulates every interpretation, every encounter, every session across the installation's run. By May 2026 it held 165 marks.
+      </p>
+
+      <p>
+        The cloth is simultaneously a collective memory object, an emotional archive, an accumulated record of machine interpretation, and a garment. It does not belong to any single participant once the first mark is inscribed.
+      </p>
+
+      <div class="image-pair">
+        <div class="project-image">
+          <img
+            src="/images/oracle/oracle_collective_cloth.jpg"
+            alt="Collective cloth — 165 marks"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
         </div>
-        <div class="component-row">
-          <span class="component-label">plotter</span>
-          <span class="component-value">CNC arm — symbolic inscription on hanging cloth</span>
-        </div>
-        <div class="component-row">
-          <span class="component-label">printer</span>
-          <span class="component-value">thermal — session receipt</span>
-        </div>
-        <div class="component-row">
-          <span class="component-label">cloth</span>
-          <span class="component-value">collective inscription surface — accumulates across all visitors</span>
-        </div>
-        <div class="component-row">
-          <span class="component-label">projection</span>
-          <span class="component-value">ambient generative environment — fills the room</span>
+        <div class="project-image">
+          <img
+            src="/images/oracle/plotter_drawing.jpg"
+            alt="CNC plotter drawing a symbolic mark"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
         </div>
       </div>
+
+      <div class="section-divider">
+        <span class="eyebrow">the receipt</span>
+      </div>
+
+      <p>
+        The thermal receipt was not anticipated as significant. It became unexpectedly important during testing. Participants repeatedly held it, reread it, photographed it, asked questions about it afterward. People who had been uncertain during the encounter engaged with it deeply once it was in their hands.
+      </p>
+
+      <p>
+        The receipt tells the visitor exactly what the machine perceived — acoustic measurements, emotional classification, thematic keywords, the oracle's Turn 4 statement, a QR code linking to a session-specific page in the web archive. Whether the system's perception was accurate is a different question. One the machine cannot answer.
+      </p>
+
+      <div class="project-image project-image--narrow">
+        <img
+          src="/images/oracle/oracle_receipt_macro.jpg"
+          alt="Thermal receipt — session document"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <div class="section-divider">
+        <span class="eyebrow">the design system</span>
+      </div>
+
+      <p>
+        Oracle operates in two visual registers. The installation screen: void black, cream text, gold mark — luminous, symbolic. Everything outside it — receipt, web archive, documentation — uses cream, charcoal, and IBM Plex Mono. Gold crosses both. On void it reads as divine. On cream it reads as aged, material, printed. The same hue; entirely different weight.
+      </p>
+
+      <div class="artifact-frame">
+        <span class="artifact-label">internal design system — The Oracle That Wears Us</span>
+        <div class="artifact-swatches">
+          <div class="swatch-item">
+            <div class="swatch" style="background: #0A0A0A; border: 1px solid rgba(255,255,255,0.1);"></div>
+            <span class="swatch-label">void #0A0A0A</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background: #C9A84C;"></div>
+            <span class="swatch-label">gold #C9A84C</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background: #F7F4EF; border: 1px solid rgba(26,26,26,0.1);"></div>
+            <span class="swatch-label">cream #F7F4EF</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background: #1A1A1A;"></div>
+            <span class="swatch-label">charcoal #1A1A1A</span>
+          </div>
+        </div>
+        <div class="artifact-type">
+          Cinzel Decorative · logotype only<br />
+          Cinzel · section titles, navigation<br />
+          EB Garamond · all body text<br />
+          IBM Plex Mono · system output, session data, measurements
+        </div>
+      </div>
+
+      <blockquote class="pull-quote">
+        The oracle's reading did not need to be correct. It needed to feel considered.
+      </blockquote>
 
     </div>
 
@@ -126,15 +274,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">venue</span>
-        <span class="meta-value">IADE – Universidade Europeia, Lisbon</span>
+        <span class="meta-value">IADE – Universidade Europeia, Lisbon · Public exhibition September 2026</span>
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">tools</span>
-        <span class="meta-value">TouchDesigner · Python · STT · LLM · image generation · TTS · CNC · thermal printing</span>
+        <span class="meta-value">TouchDesigner · Python · Gemma3:4b (Ollama) · Vosk · KittenTTS · FLUX img2img (Replicate) · ONNX · OpenCV · Firebase · FluidNC / NEJE CNC · ESP32</span>
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">collaborators</span>
-        <span class="meta-value">Andrey Dyakov (CNC engineering) · Dmitrii Kazantsev (generative projection)</span>
+        <span class="meta-value">Andrey Dyakov (physical pipeline, plotter, web archive) · Dmitrii Kazantsev (oracle figure, ambient sound)</span>
       </div>
     </div>
 
@@ -176,12 +324,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     font-weight: var(--w-light);
     line-height: var(--lh-body);
     color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+  .lead-sub {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
     margin-bottom: var(--space-4);
   }
   .type-divider {
     margin: var(--space-4) 0;
   }
   p {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
     margin-bottom: var(--space-3);
   }
 
@@ -196,7 +357,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     flex-wrap: wrap;
     align-items: center;
     gap: 4px;
-    padding: var(--space-3) var(--space-3);
+    padding: var(--space-3);
     background: var(--surface);
     border-left: 2px solid var(--gold);
     margin: var(--space-3) 0;
@@ -215,59 +376,76 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     margin: 0 2px;
   }
 
-  .pipeline {
+  .project-image {
     background: var(--surface);
-    border-left: 2px solid var(--gold);
-    padding: var(--space-3) var(--space-3);
-    margin: var(--space-3) 0;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: var(--w-light);
-    color: var(--mid);
-    line-height: var(--lh-body);
+    border: 1px solid var(--border);
+    margin: var(--space-4) 0;
+    overflow: hidden;
   }
-  .pipeline-group {
-    font-size: 11px;
-    font-weight: var(--w-regular);
-    letter-spacing: var(--ls-widest);
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: var(--space-3);
-    margin-bottom: 4px;
-    display: block;
+  .project-image--narrow {
+    max-width: 360px;
   }
-  .pipeline-group:first-child {
-    margin-top: 0;
-  }
-  .pipeline-row {
+  .content-img {
+    width: 100%;
+    height: auto;
     display: block;
   }
 
-  .components-list {
-    margin: var(--space-3) 0;
-    border-top: 1px solid var(--border);
-  }
-  .component-row {
+  .image-pair {
     display: grid;
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-3);
-    padding: var(--space-2) 0;
-    border-bottom: 1px solid var(--border);
+    margin: var(--space-4) 0;
+  }
+  .image-pair .project-image {
+    margin: 0;
+  }
+
+  .possession-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+    margin: var(--space-4) 0;
+  }
+  .possession-step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .possession-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .artifact-swatches {
+    display: flex;
+    gap: 12px;
+    margin-bottom: var(--space-3);
+    flex-wrap: wrap;
+  }
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .swatch {
+    width: 48px;
+    height: 48px;
+  }
+  .swatch-label {
     font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: var(--w-light);
+    font-size: 9px;
+    color: var(--muted);
   }
-  .component-label {
-    color: var(--gold);
+  .artifact-type {
+    font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: var(--w-regular);
-    letter-spacing: var(--ls-tight);
-    align-self: start;
-    padding-top: 2px;
-  }
-  .component-value {
     color: var(--mid);
-    line-height: var(--lh-body);
+    line-height: 1.7;
   }
 
   .project-meta {
@@ -298,13 +476,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     .project {
       padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
     }
-    .state-flow {
-      gap: 2px;
-    }
-    .component-row,
-    .meta-row {
-      grid-template-columns: 1fr;
-      gap: 4px;
-    }
+    .state-flow { gap: 2px; }
+    .possession-strip { grid-template-columns: repeat(2, 1fr); }
+    .image-pair { grid-template-columns: 1fr; }
+    .meta-row { grid-template-columns: 1fr; gap: 4px; }
+    .project-image--narrow { max-width: 100%; }
   }
 </style>

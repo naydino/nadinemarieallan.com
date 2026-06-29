@@ -435,6 +435,23 @@ img.greyscale-locked { filter: grayscale(100%); }
 ::selection { background: var(--gold-soft); color: var(--ink); }
 
 * { scrollbar-width: thin; scrollbar-color: var(--muted) transparent; }
+
+.artifact-frame {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: var(--space-3);
+  margin: var(--space-4) 0;
+  position: relative;
+}
+.artifact-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: var(--space-2);
+}
 *::-webkit-scrollbar { width: 8px; height: 8px; }
 *::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
 *::-webkit-scrollbar-track { background: transparent; }
