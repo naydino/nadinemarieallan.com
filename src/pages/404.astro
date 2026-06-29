@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="page not found">
+  <section class="not-found">
+    <span class="eyebrow">404</span>
+    <p class="display-lg title">this page doesn't exist yet.</p>
+    <p class="body-text message">
+      The project page you're looking for is in progress.<br />
+      Head back to the work archive or get in touch.
+    </p>
+    <div class="links-row">
+      <a class="cta-link" href="/work">← all work</a>
+      <a class="cta-link" href="/contact">contact →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-8) var(--page-padding-x) var(--space-8);
+  }
+  .title {
+    margin-top: var(--space-3);
+    max-width: 480px;
+  }
+  .message {
+    margin-top: var(--space-4);
+    max-width: 420px;
+  }
+  .links-row {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  @media (max-width: 600px) {
+    .not-found {
+      padding: var(--space-6) var(--page-padding-x-sm) var(--space-7);
+    }
+  }
+</style>

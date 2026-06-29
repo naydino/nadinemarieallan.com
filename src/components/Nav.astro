@@ -15,13 +15,12 @@ function isActive(href: string) {
 
 <header class="nav">
   <a href="/" class="nav-logo" aria-label="nadine marie allan — home">
-    <span class="chop" style="--chop-size: 40px;">
-      <span class="chop-inner">
-        <span class="chop-line">nadine</span>
-        <span class="chop-line italic">marie</span>
-        <span class="chop-line">allan</span>
-      </span>
-    </span>
+    <img
+      src="/images/Nadine_Marie_Allan_Logo.png"
+      alt="Nadine Marie Allan"
+      class="logo-img"
+      width="90"
+    />
   </a>
   <nav class="nav-links">
     {items.map((item) => (
@@ -50,6 +49,11 @@ function isActive(href: string) {
     display: flex;
     align-items: center;
     text-decoration: none;
+  }
+  .logo-img {
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply;
   }
   .nav-links {
     display: flex;

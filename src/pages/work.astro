@@ -5,23 +5,23 @@ const groups = [
   {
     year: '2025',
     projects: [
-      { title: 'The Oracle That Wears Us', slug: 'oracle', medium: 'installation', venue: 'IADE', image: '/images/oracle/hero.jpg' },
-      { title: 'Echo Garden', slug: 'echo-garden', medium: 'generative-media', venue: 'IADE – Universidade Europeia', image: '/images/echo-garden/hero.jpg' },
-      { title: 'Snakeskin Jacket', slug: 'snakeskin', medium: 'experimental-multimedia', venue: 'Cucalorus Film Festival', image: '/images/snakeskin/IMG_5543.jpg' },
+      { title: 'The Oracle That Wears Us', slug: 'oracle', medium: 'installation', venue: 'IADE', image: '/images/oracle/hero.jpg', live: true },
+      { title: 'Echo Garden', slug: 'echo-garden', medium: 'generative-media', venue: 'IADE – Universidade Europeia', image: '/images/echo-garden/hero.jpg', live: false },
+      { title: 'Snakeskin Jacket', slug: 'snakeskin', medium: 'experimental-multimedia', venue: 'Cucalorus Film Festival', image: '/images/snakeskin/IMG_5543.jpg', live: false },
     ],
   },
   {
     year: '2022',
     projects: [
-      { title: 'Metropolis Unrestored', slug: 'metropolis', medium: 'experimental-multimedia', venue: 'Fantastic Fest', image: '/images/metropolis/IMG_0470.JPG' },
-      { title: 'Nosfera2', slug: 'nosfera2', medium: 'installation', venue: 'Overlook Film Festival', image: '/images/nosfera2/IMG_8685.JPG' },
+      { title: 'Metropolis Unrestored', slug: 'metropolis', medium: 'experimental-multimedia', venue: 'Fantastic Fest', image: '/images/metropolis/IMG_0530.JPG', live: false },
+      { title: 'Nosfera2', slug: 'nosfera2', medium: 'installation', venue: 'Overlook Film Festival', image: '/images/nosfera2/IMG_8685.JPG', live: false },
     ],
   },
   {
     year: '2021',
     projects: [
-      { title: '#0000FF Velvet', slug: 'velvet', medium: 'installation', venue: 'Cucalorus Film Festival', image: '/images/velvet/1A0E5F07-2C5F-4948-92B5-AFCB4F97C6FE.jpg' },
-      { title: 'Digital Debris Gallery', slug: 'digital-debris', medium: 'video-performance', venue: 'Digital Debris Gallery', image: '/images/digital-debris/60FC88AD-A873-4275-B0B4-1F003B61B431.jpg' },
+      { title: '#0000FF Velvet', slug: 'velvet', medium: 'installation', venue: 'Cucalorus Film Festival', image: '/images/velvet/762AE461-32C8-4926-97F3-725645EE5864.jpg', live: false },
+      { title: 'Digital Debris Gallery', slug: 'digital-debris', medium: 'video-performance', venue: 'Digital Debris Gallery', image: '/images/digital-debris/60FC88AD-A873-4275-B0B4-1F003B61B431.jpg', live: false },
     ],
   },
 ];
@@ -62,28 +62,53 @@ const filters = [
           </div>
           <div class="cells-grid">
             {group.projects.map((project) => (
-              <a
-                href={`/work/${project.slug}`}
-                class="project-cell"
-                data-medium={project.medium}
-              >
-                <div class="cell-image">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    class="cell-img"
-                    onerror="this.style.display='none'"
-                  />
-                </div>
-                <div class="cell-meta">
-                  <span class="year-label">{group.year}</span>
-                  <div class="cell-title display-lg">{project.title}</div>
-                  <div class="cell-venue">{project.venue}</div>
-                  <div class="cell-tags">
-                    <span class="tag">{project.medium.replace(/-/g, ' ')}</span>
+              project.live ? (
+                <a
+                  href={`/work/${project.slug}`}
+                  class="project-cell"
+                  data-medium={project.medium}
+                >
+                  <div class="cell-image">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      class="cell-img"
+                      onerror="this.style.display='none'"
+                    />
+                  </div>
+                  <div class="cell-meta">
+                    <span class="year-label">{group.year}</span>
+                    <div class="cell-title display-lg">{project.title}</div>
+                    <div class="cell-venue">{project.venue}</div>
+                    <div class="cell-tags">
+                      <span class="tag">{project.medium.replace(/-/g, ' ')}</span>
+                    </div>
+                  </div>
+                </a>
+              ) : (
+                <div
+                  class="project-cell no-link"
+                  data-medium={project.medium}
+                >
+                  <div class="cell-image">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      class="cell-img"
+                      onerror="this.style.display='none'"
+                    />
+                  </div>
+                  <div class="cell-meta">
+                    <span class="year-label">{group.year}</span>
+                    <div class="cell-title display-lg">{project.title}</div>
+                    <div class="cell-venue">{project.venue}</div>
+                    <div class="cell-tags">
+                      <span class="tag">{project.medium.replace(/-/g, ' ')}</span>
+                    </div>
+                    <div class="cell-coming-soon">page coming soon</div>
                   </div>
                 </div>
-              </a>
+              )
             ))}
           </div>
         </div>
@@ -165,8 +190,11 @@ const filters = [
     text-decoration: none;
     transition: transform var(--transition-base);
   }
-  .project-cell:hover {
+  .project-cell:not(.no-link):hover {
     transform: translateY(-3px);
+  }
+  .no-link {
+    cursor: default;
   }
   .cell-image {
     background: var(--surface);
@@ -181,7 +209,7 @@ const filters = [
     filter: grayscale(100%);
     transition: filter var(--transition-slow);
   }
-  .project-cell:hover .cell-img {
+  .project-cell:not(.no-link):hover .cell-img {
     filter: grayscale(0%);
   }
   .cell-meta {
@@ -196,7 +224,7 @@ const filters = [
     transition: color var(--transition-base);
     margin: 0;
   }
-  .project-cell:hover .cell-title {
+  .project-cell:not(.no-link):hover .cell-title {
     color: var(--gold);
   }
   .cell-venue {
@@ -211,6 +239,15 @@ const filters = [
     gap: 6px;
     flex-wrap: wrap;
     margin-top: var(--space-1);
+  }
+  .cell-coming-soon {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: var(--w-light);
+    color: var(--muted);
+    letter-spacing: var(--ls-base);
+    margin-top: 6px;
+    font-style: italic;
   }
 
   @media (max-width: 600px) {
