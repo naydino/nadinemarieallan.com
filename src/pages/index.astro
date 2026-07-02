@@ -3,8 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const featured = [
   {
+    title: 'Baroque Karaoke',
+    descriptor: 'interactive systems, participatory performance · 2026',
+    image: '/images/baroque-karaoke/thumb.jpg',
+    href: '/work/baroque-karaoke',
+  },
+  {
     title: 'The Oracle That Wears Us',
-    descriptor: 'interactive AI installation · 2025',
+    descriptor: 'interactive AI installation · 2026',
     image: '/images/oracle/oracle_installation_room.png',
     href: '/work/oracle',
   },
@@ -107,7 +113,7 @@ const featured = [
   }
   .featured-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3);
   }
   .project-cell {
@@ -152,11 +158,6 @@ const featured = [
     margin-top: var(--space-4);
   }
 
-  @media (max-width: 768px) {
-    .featured-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
   @media (max-width: 600px) {
     .hero {
       padding: var(--space-6) var(--page-padding-x-sm) var(--space-5);

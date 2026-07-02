@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Baroque Karaoke" description="A participatory performance system that turns any sentence into baroque karaoke, sung by six historical figures.">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">interactive systems · 2026</span>
+      <h1 class="display-xl project-title">Baroque Karaoke</h1>
+    </header>
+
+    <div class="hero-video">
+      <video
+        class="hero-vid"
+        poster="/images/baroque-karaoke/hero-loop-poster.jpg"
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+        <source src="/images/baroque-karaoke/hero-loop.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="project-body">
+
+      <p class="lead">
+        Baroque Karaoke takes a sentence about nothing — a broken coffee machine, a missed appointment — and asks a language model to perform it as tragedy. Six historical figures, six eras, one system prompt swapping tone for grandeur. The banality doesn't disappear into the baroque frame. It sits inside it, still banal, now singing.
+      </p>
+
+      <hr class="type-divider" />
+
+      <!-- NADINE: replace this paragraph with your own first-person process narrative — why this exists, what pivoted. See the note in BAROQUE-KARAOKE-HANDOFF.md. -->
+      <p>
+        This one started from a simple provocation: what happens if you take the most boring sentence you can think of and refuse to let the system treat it as boring. Baroque Karaoke is the result of pushing that question through six historical registers and letting GPT-4o-mini decide how far to take the drama.
+      </p>
+
+      <p>
+        The system runs on three variables recombined at every performance: character, drama, and the sentence itself. A dropdown swaps Shakespeare for Napoleon for Aristotle — swaps the portrait, the era, the voice injected into the prompt. A slider called Drama moves the tone instruction from quiet dignity to operatic overwroughtness. The sentence stays exactly as banal as it was typed. GPT-4o-mini doesn't fix that. It performs it.
+      </p>
+
+      <blockquote class="pull-quote">
+        The banality doesn't disappear into the baroque frame. It sits inside it, still banal, now singing.
+      </blockquote>
+
+      <p>
+        Underneath, seven modular containers in TouchDesigner handle input, prompt construction, the API call, lyric parsing, word timing, and the final composite — a brass plaque UI, a gilt frame, neon cyan text that pulses word by word over an oil-painted landscape. A Tempo slider controls scroll speed after generation; Temperature controls how far the model wanders before it. Failure is part of the design: a missing API key doesn't crash the piece, it turns the portrait red and asks you to try again.
+      </p>
+
+      <div class="image-pair">
+        <div class="project-image">
+          <img
+            src="/images/baroque-karaoke/marie-antoinette-performance.jpg"
+            alt="Marie Antoinette performing 'I spent all day waiting and nobody showed up'"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+        <div class="project-image">
+          <img
+            src="/images/baroque-karaoke/aristotle-performance.jpg"
+            alt="Aristotle performing 'The coffee machine is broken and I have not slept'"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+
+      <p>
+        A system asked to translate one kind of thing into another, with the translation itself becoming the work. Here the material is language, the system is a language model, and the transformation happens in real time, out loud, with the visitor doing the singing.
+      </p>
+
+      <div class="section-divider">
+        <span class="eyebrow">the pipeline</span>
+      </div>
+
+      <div class="project-image">
+        <img
+          src="/images/baroque-karaoke/system-architecture-diagram.svg"
+          alt="Baroque Karaoke system pipeline — seven containers from input to visual composite"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-row">
+        <span class="meta-label eyebrow">year</span>
+        <span class="meta-value">2026</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">medium</span>
+        <span class="meta-value">interactive systems / participatory performance</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">tools</span>
+        <span class="meta-value">TouchDesigner · OpenAI API (GPT-4o-mini) · Python</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">collaborators</span>
+        <span class="meta-value">Solo</span>
+      </div>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .hero-video {
+    background: var(--surface);
+    margin-bottom: var(--space-6);
+    min-height: 340px;
+    overflow: hidden;
+  }
+  .hero-vid {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+  .type-divider {
+    margin: var(--space-4) 0;
+  }
+  p {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+
+  .section-divider {
+    margin: var(--space-5) 0 var(--space-3);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+  }
+
+  .project-image {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: var(--space-4) 0;
+    overflow: hidden;
+  }
+  .content-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .image-pair .project-image {
+    margin: 0;
+  }
+
+  .project-meta {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-4);
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .meta-label {
+    color: var(--gold);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .meta-value {
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+    .image-pair { grid-template-columns: 1fr; }
+    .meta-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
