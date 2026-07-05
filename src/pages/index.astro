@@ -1,89 +1,102 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const featured = [
-  {
-    title: 'Baroque Karaoke',
-    descriptor: 'interactive systems, participatory performance · 2026',
-    image: '/images/baroque-karaoke/thumb.jpg',
-    href: '/work/baroque-karaoke',
-  },
-  {
-    title: 'The Oracle That Wears Us',
-    descriptor: 'interactive AI installation · 2026',
-    image: '/images/oracle/oracle_installation_room.png',
-    href: '/work/oracle',
-  },
-  {
-    title: 'Echo Garden',
-    descriptor: 'generative p5.js environment · 2025',
-    image: '/images/echo-garden/hero.jpg',
-    href: '#',
-  },
-  {
-    title: '#0000FF Velvet',
-    descriptor: 'projection mapping, installation · 2021',
-    image: '/images/velvet/762AE461-32C8-4926-97F3-725645EE5864.jpg',
-    href: '#',
-  },
-];
+const heroSrc = '/images/fine-art/natural pigments/ink-collage-popo-catalogue_BG_removed.png';
+const heroMaskStyle = `-webkit-mask-image:url('${heroSrc}'); mask-image:url('${heroSrc}');`;
 ---
 
 <BaseLayout title="home">
-  <section class="hero">
-    <span class="eyebrow">artist & creative technologist — lisbon</span>
-    <h1 class="display-xl hero-statement">
-      What does a system do to a thing when it tries to understand it?
-    </h1>
-    <hr class="type-divider" />
+  <section class="hero" style={`background-image:url('${heroSrc}')`}>
+    <div class="hero-duotone" aria-hidden="true">
+      <div class="hero-duotone-shadow" style={heroMaskStyle}></div>
+      <div class="hero-duotone-highlight" style={heroMaskStyle}></div>
+    </div>
+    <div class="hero-text">
+      <span class="eyebrow">artist & creative technologist — lisbon</span>
+      <h1 class="display-xl hero-statement">
+        What does a system do to a thing when it tries to understand it?
+      </h1>
+    </div>
+  </section>
+
+  <section class="page-footer">
+    <hr class="rule" />
     <p class="bio">
       Based in Lisbon, completing an MA in Creative Computing and AI at IADE – Universidade Europeia. I work in installation, generative media, video, and sound — tracing what gets lost, added, or transformed in translation.
     </p>
     <div class="links-row">
-      <a class="cta-link" href="/work">view work →</a>
-      <a class="cta-link" href="/about">about</a>
-    </div>
-  </section>
-
-  <section class="featured">
-    <div class="featured-head">
-      <hr class="rule" />
-      <span class="eyebrow">selected work</span>
-    </div>
-    <div class="featured-grid">
-      {featured.map((project) => (
-        <a href={project.href} class="project-cell">
-          <div class="cell-image">
-            <img
-              src={project.image}
-              alt={project.title}
-              class="cell-img"
-              onerror="this.style.display='none'"
-            />
-          </div>
-          <div class="cell-title display-md">{project.title}</div>
-          <div class="cell-descriptor">{project.descriptor}</div>
-        </a>
-      ))}
-    </div>
-    <div class="featured-cta">
       <a class="cta-link" href="/work">view all work →</a>
+      <a class="cta-link" href="/about">about</a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .hero {
-    max-width: var(--content-max);
-    margin: 0 auto;
-    padding: var(--space-7) var(--page-padding-x) var(--space-6);
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: calc(100vh - var(--nav-height));
+    min-height: 480px;
+    overflow: hidden;
+    background-color: var(--bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .hero-duotone {
+    position: absolute;
+    inset: 0;
+    transition: opacity var(--transition-slow);
+  }
+  .hero:hover .hero-duotone {
+    opacity: 0;
+  }
+  .hero-duotone-shadow,
+  .hero-duotone-highlight {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+  .hero-duotone-shadow {
+    background: var(--duo-shadow);
+    -webkit-mask-mode: alpha;
+    mask-mode: alpha;
+  }
+  .hero-duotone-highlight {
+    background: var(--duo-highlight);
+    -webkit-mask-mode: luminance;
+    mask-mode: luminance;
+  }
+  .hero-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: var(--space-6) var(--page-padding-x);
+    background: linear-gradient(to top, rgba(20, 17, 13, 0.78) 0%, rgba(20, 17, 13, 0.32) 60%, transparent 100%);
+  }
+  .hero-text .eyebrow {
+    color: var(--gold-light);
   }
   .hero-statement {
-    margin-top: var(--space-3);
+    margin-top: var(--space-2);
     max-width: 640px;
+    color: var(--bg);
   }
-  .type-divider {
-    margin: var(--space-3) 0;
+
+  .page-footer {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-7);
+  }
+  .page-footer .rule {
+    margin-bottom: var(--space-4);
   }
   .bio {
     font-family: var(--font-mono);
@@ -100,73 +113,15 @@ const featured = [
     margin-top: var(--space-4);
   }
 
-  .featured {
-    max-width: var(--content-max);
-    margin: 0 auto;
-    padding: 0 var(--page-padding-x) var(--space-7);
-  }
-  .featured-head {
-    margin-bottom: var(--space-4);
-  }
-  .featured-head .rule {
-    margin-bottom: var(--space-3);
-  }
-  .featured-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-3);
-  }
-  .project-cell {
-    display: block;
-    text-decoration: none;
-    transition: transform var(--transition-base);
-  }
-  .project-cell:hover {
-    transform: translateY(-3px);
-  }
-  .cell-image {
-    background: var(--surface);
-    overflow: hidden;
-    margin-bottom: var(--space-2);
-    min-height: 180px;
-  }
-  .cell-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(100%);
-    transition: filter var(--transition-slow);
-  }
-  .project-cell:hover .cell-img {
-    filter: grayscale(0%);
-  }
-  .cell-title {
-    transition: color var(--transition-base);
-  }
-  .project-cell:hover .cell-title {
-    color: var(--gold);
-  }
-  .cell-descriptor {
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    font-weight: var(--w-light);
-    color: var(--muted);
-    margin-top: 4px;
-  }
-  .featured-cta {
-    text-align: right;
-    margin-top: var(--space-4);
-  }
-
   @media (max-width: 600px) {
     .hero {
-      padding: var(--space-6) var(--page-padding-x-sm) var(--space-5);
+      min-height: 420px;
     }
-    .featured {
-      padding: 0 var(--page-padding-x-sm) var(--space-6);
+    .hero-text {
+      padding: var(--space-5) var(--page-padding-x-sm);
     }
-    .featured-grid {
-      grid-template-columns: 1fr;
+    .page-footer {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-6);
     }
   }
 </style>

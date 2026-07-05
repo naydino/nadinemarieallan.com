@@ -1,0 +1,19 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { src, alt, class: className = '', loading = 'eager' } = Astro.props;
+const maskStyle = `-webkit-mask-image:url('${src}'); mask-image:url('${src}');`;
+---
+
+<div class={`duotone-frame ${className}`}>
+  <img src={src} alt={alt} class="duotone-color" loading={loading} onerror="this.closest('.duotone-frame').style.display='none'" />
+  <div class="duotone-overlay" aria-hidden="true">
+    <div class="duotone-shadow-layer" style={maskStyle}></div>
+    <div class="duotone-mask-layer" style={maskStyle}></div>
+  </div>
+</div>

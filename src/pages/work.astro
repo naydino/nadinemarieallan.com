@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import DuotoneImage from '../components/DuotoneImage.astro';
 
 const groups = [
   {
@@ -76,12 +77,7 @@ const filters = [
                   data-medium={project.medium}
                 >
                   <div class="cell-image">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      class="cell-img"
-                      onerror="this.style.display='none'"
-                    />
+                    <DuotoneImage src={project.image} alt={project.title} class="cell-img" />
                   </div>
                   <div class="cell-meta">
                     <span class="year-label">{group.year}</span>
@@ -98,12 +94,7 @@ const filters = [
                   data-medium={project.medium}
                 >
                   <div class="cell-image">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      class="cell-img"
-                      onerror="this.style.display='none'"
-                    />
+                    <DuotoneImage src={project.image} alt={project.title} class="cell-img" />
                   </div>
                   <div class="cell-meta">
                     <span class="year-label">{group.year}</span>
@@ -208,16 +199,6 @@ const filters = [
     overflow: hidden;
     margin-bottom: var(--space-2);
     min-height: 200px;
-  }
-  .cell-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(100%);
-    transition: filter var(--transition-slow);
-  }
-  .project-cell:not(.no-link):hover .cell-img {
-    filter: grayscale(0%);
   }
   .cell-meta {
     padding: 0 2px;

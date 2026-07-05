@@ -29,6 +29,10 @@
   --error:       #8a3e2a;
   --error-soft:  rgba(138, 62, 42, 0.08);
 
+  /* ---------- DUOTONE (work imagery, sitewide) ---------- */
+  --duo-shadow:    #233158;   /* tuned against Velvet, Oracle, hero collage — clean cool blue, approved */
+  --duo-highlight: #f4f0e9;   /* = --bg */
+
   /* ---------- TYPE ---------- */
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
@@ -369,6 +373,61 @@ img.greyscale {
 .project-thumb:hover img,
 a:hover img.greyscale { filter: grayscale(0%); }
 img.greyscale-locked { filter: grayscale(100%); }
+
+/* =========================================================
+   DUOTONE — indigo-on-cream treatment for work imagery.
+   Two-layer: full-color img in flow underneath, a duotone
+   overlay (isolated internal blend) absolutely covering it.
+   The overlay fades on hover so the reveal can transition —
+   a `filter: url(#svg-filter)` duotone can't animate, this can.
+   ========================================================= */
+
+.duotone-frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--surface);
+}
+.duotone-frame .duotone-color {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.duotone-frame .duotone-overlay {
+  position: absolute;
+  inset: 0;
+  transition: opacity var(--transition-slow);
+}
+.duotone-frame .duotone-shadow-layer {
+  position: absolute;
+  inset: 0;
+  background: var(--duo-shadow);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+}
+.duotone-frame .duotone-mask-layer {
+  position: absolute;
+  inset: 0;
+  background: var(--duo-highlight);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-mode: luminance;
+  mask-mode: luminance;
+}
+a:hover .duotone-frame .duotone-overlay,
+.duotone-frame:hover .duotone-overlay {
+  opacity: 0;
+}
 
 .full-bleed {
   width: 100vw;
