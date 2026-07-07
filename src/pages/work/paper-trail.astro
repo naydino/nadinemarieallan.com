@@ -1,23 +1,22 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-// Stills only for now — two .mov files (IMG_0100, IMG_0104) live in public/images/velvet/
-// alongside their still counterparts; following the Nosfera2 precedent, video integration
-// waits for Vimeo. Note: this was one of two installations Nadine built for Cucalorus 2021 —
-// see /work/paper-trail for the other (rice-paper forms, detective-film projection mapping).
+// Title "Paper Trail" is a provisional working title — Nadine hasn't named this piece yet.
+// The second of two installations built for Cucalorus 2021, alongside #0000FF Velvet
+// (/work/velvet). Stills only for now, following the same precedent as the other pages.
 ---
 
-<BaseLayout title="#0000FF Velvet" description="An indigo-dyed robe, named for David Lynch's Blue Velvet, hung from a tree and doubled as a tent visitors could step inside to meditate on ambient sound and projected light. Made with Racer Trash for Cucalorus Film Festival, 2021.">
+<BaseLayout title="Paper Trail" description="Rice-paper forms hung overhead, each catching a projected fragment of a detective film — footsteps, not voice, drove the visuals. Cucalorus Film Festival, 2021.">
   <article class="project">
 
     <header class="project-header">
       <span class="eyebrow">installation · 2021</span>
-      <h1 class="display-xl project-title">#0000FF Velvet</h1>
+      <h1 class="display-xl project-title">Paper Trail</h1>
     </header>
 
     <div class="hero-image">
       <img
-        src="/images/velvet/IMG_0075.jpg"
-        alt="Indigo-dyed robe hung from a tree, doubling as a tent, projected color visible inside"
+        src="/images/velvet/8613B089-99ED-43F3-A72E-4778BBA2A50C.jpg"
+        alt="Dozens of rice-paper forms hung on wire under a chicken-wire canopy, catching projected color at night"
         class="hero-img"
         onerror="this.style.display='none'"
       />
@@ -26,24 +25,30 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="project-body">
 
       <p class="lead">
-        #0000FF is a hex code — the flattest blue a screen can render, no texture, no batch variation. What hangs here is dyed indigo instead: vat-fermented, oxidized in open air, no two folds landing on quite the same value. Built with Racer Trash for Cucalorus Film Festival, 2021, and named for David Lynch's Blue Velvet, the robe hung from a tree and doubled as a tent — sleeves closed overhead like a roof, the body a room visitors could step into, alone or together, to sit with ambient sound and shifting projected light.
+        Overhead, a second Cucalorus installation answered #0000FF Velvet in a different material: dozens of rice-paper forms, hand-cut and hung on wire beneath a canopy of chicken wire, each catching a projected fragment of a detective film. Visitors walked underneath rather than stepped inside — their footsteps drove the visuals, breaking a scene into pieces and reassembling it as they moved.
       </p>
 
-      <blockquote class="pull-quote">
-        A hex code is exact. Indigo never is.
-      </blockquote>
-
-      <div class="project-image">
-        <img
-          src="/images/velvet/1A0E5F07-2C5F-4948-92B5-AFCB4F97C6FE.jpg"
-          alt="A visitor inside the indigo tent, projected color lighting the interior"
-          class="content-img"
-          onerror="this.style.display='none'"
-        />
+      <div class="image-pair">
+        <div class="project-image">
+          <img
+            src="/images/velvet/762AE461-32C8-4926-97F3-725645EE5864.jpg"
+            alt="Rice-paper forms catching abstracted color fragments, hung on wire beneath the canopy"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+        <div class="project-image">
+          <img
+            src="/images/velvet/IMG_0104.jpg"
+            alt="A rice-paper form catching a recognizable frame from the detective film footage"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
       </div>
 
       <p>
-        It was one of two installations built for Cucalorus that year. The other hung rice-paper forms overhead instead of fabric, threaded with fragments of a detective film, answering footsteps rather than voice — <a href="/work/paper-trail" class="cta-link">see Paper Trail →</a>
+        Where Velvet was a room to sit inside, this piece was a path to walk under — the same footage, the same night, read through the body instead of held still around it.
       </p>
 
     </div>
@@ -55,15 +60,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">medium</span>
-        <span class="meta-value">installation — indigo-dyed textile, projection mapping, audio-reactive</span>
+        <span class="meta-value">installation — rice paper, projection mapping, footstep-reactive audio</span>
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">venue</span>
         <span class="meta-value">Cucalorus Film Festival, Wilmington NC · 2021</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label eyebrow">collaborators</span>
-        <span class="meta-value">Racer Trash</span>
       </div>
     </div>
 
@@ -128,6 +129,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     display: block;
   }
 
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .image-pair .project-image {
+    margin: 0;
+  }
+
   .project-meta {
     border-top: 1px solid var(--border);
     padding-top: var(--space-4);
@@ -156,6 +167,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     .project {
       padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
     }
+    .image-pair { grid-template-columns: 1fr; }
     .meta-row { grid-template-columns: 1fr; gap: 4px; }
   }
 </style>

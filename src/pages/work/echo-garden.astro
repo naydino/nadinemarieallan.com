@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Echo Garden" description="A generative p5.js environment that grows in response to time and interaction.">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">generative media · 2025</span>
+      <h1 class="display-xl project-title">Echo Garden</h1>
+    </header>
+
+    <div class="hero-image">
+      <img
+        src="/images/echo-garden/hero.jpg"
+        alt="Echo Garden — dense grid of shifting text characters resolving into a figure"
+        class="hero-img"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <div class="project-body">
+
+      <p class="lead">
+        Echo Garden is a generative p5.js environment that grows in response to time and interaction. Text stands in for pixels: words, stray phrases, fragments left behind by whoever passed through, densifying into a shifting character grid until a figure resolves out of it — the way an image resolves out of noise the longer you look.
+      </p>
+
+      <p>
+        Shown at IADE – Universidade Europeia, Lisbon, 2025.
+      </p>
+
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-row">
+        <span class="meta-label eyebrow">year</span>
+        <span class="meta-value">2025</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">medium</span>
+        <span class="meta-value">generative media — p5.js</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">venue</span>
+        <span class="meta-value">IADE – Universidade Europeia, Lisbon · 2025</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">tools</span>
+        <span class="meta-value">p5.js · JavaScript</span>
+      </div>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .hero-image {
+    background: var(--surface);
+    margin-bottom: var(--space-6);
+    min-height: 340px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+  p {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+
+  .project-meta {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-4);
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .meta-label {
+    color: var(--gold);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .meta-value {
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+    .meta-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>

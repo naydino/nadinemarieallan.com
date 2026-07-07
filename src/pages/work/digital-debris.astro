@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+// An ongoing collection page — Nadine plans to add more audio/visual performances here
+// over time. Structured as a list so new entries just append to `highlights`.
+const highlights = [
+  {
+    title: 'Digital Debris Gallery',
+    venue: 'Los Angeles',
+    year: '2021',
+    role: 'Live, audio-reactive projection mapping performance, played on an electronic zither.',
+    image: '/images/digital-debris/60FC88AD-A873-4275-B0B4-1F003B61B431.jpg',
+  },
+];
+---
+
+<BaseLayout title="Audio/Visual Explorations" description="Live audio-visual performances — projection-mapped video played and driven by an electronic zither.">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">video &amp; performance</span>
+      <h1 class="display-xl project-title">Audio/Visual Explorations</h1>
+    </header>
+
+    <div class="project-body">
+
+      <p class="lead">
+        A collection of live audio-visual performances, built and played on an electronic zither: the instrument drives projection-mapped video in real time, so the visuals move exactly as fast as the hands playing them.
+      </p>
+
+      <div class="highlights">
+        {highlights.map((h) => (
+          <div class="highlight-item">
+            <div class="project-image">
+              <img
+                src={h.image}
+                alt={`${h.title} — live AV performance`}
+                class="content-img"
+                onerror="this.style.display='none'"
+              />
+            </div>
+            <div class="highlight-caption">
+              <span class="highlight-title">{h.title}</span>
+              <span class="highlight-meta">{h.venue} · {h.year}</span>
+              <span class="caption">{h.role}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="project-image">
+        <img
+          src="/images/digital-debris/IMG_1986.jpg"
+          alt="Playing the electronic zither live, surrounded by CRT monitors and VHS decks, projected visuals behind"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-4);
+  }
+
+  .highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  .highlight-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-3);
+    align-items: start;
+  }
+  .project-image {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: var(--space-4) 0;
+    overflow: hidden;
+  }
+  .highlight-item .project-image {
+    margin: 0;
+  }
+  .content-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .highlight-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 2px;
+  }
+  .highlight-title {
+    font-family: var(--font-mono);
+    font-style: italic;
+    font-weight: var(--w-light);
+    font-size: var(--text-md);
+    color: var(--ink);
+  }
+  .highlight-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: var(--ls-tight);
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+    .highlight-item {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
