@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+// Stills only for now — six .mov files live in public/images/velvet/ (unoptimized phone
+// exports) alongside their still counterparts; following the Nosfera2 precedent, video
+// integration waits for Vimeo.
+---
+
+<BaseLayout title="#0000FF Velvet" description="An indigo-dyed robe, hung from a tree and doubled as a tent, lit from within by audio-reactive projection. Made with Racer Trash for Cucalorus Film Festival, 2021.">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">installation · 2021</span>
+      <h1 class="display-xl project-title">#0000FF Velvet</h1>
+    </header>
+
+    <div class="hero-image">
+      <img
+        src="/images/velvet/IMG_0075.jpg"
+        alt="Indigo-dyed robe hung from a tree, doubling as a tent, projected color visible inside"
+        class="hero-img"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <div class="project-body">
+
+      <p class="lead">
+        #0000FF is a hex code — the flattest blue a screen can render, no texture, no batch variation. What hangs here is dyed indigo instead: vat-fermented, oxidized in open air, no two folds landing on quite the same value. Built with Racer Trash for Cucalorus Film Festival, 2021, the robe hung from a tree and doubled as a tent — sleeves closed overhead like a roof, the body a room you could stand inside while projected color moved across the fabric from within.
+      </p>
+
+      <blockquote class="pull-quote">
+        A hex code is exact. Indigo never is.
+      </blockquote>
+
+      <p>
+        Overhead, a second constellation answered it: dozens of smaller shapes, cut from the same dye lots and threaded on wire beneath a canopy of chicken wire, catching the same shifting, audio-reactive projection after dark. The color came from sound. The cloth just held still long enough to show it.
+      </p>
+
+      <div class="image-pair">
+        <div class="project-image">
+          <img
+            src="/images/velvet/8613B089-99ED-43F3-A72E-4778BBA2A50C.jpg"
+            alt="Full night view of the installation strung from a tree, Racer Trash signage visible behind it"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+        <div class="project-image">
+          <img
+            src="/images/velvet/762AE461-32C8-4926-97F3-725645EE5864.jpg"
+            alt="Hand-cut fabric shapes catching projected color, hung on wire beneath a chicken-wire canopy"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+
+      <p class="caption process-flag">
+        <span class="confirm-flag">[NADINE: add your own first-person account here — why the robe/tent, what the performance inside it involved, what "#0000FF" means to you beyond the hex-code/indigo material contrast above.]</span>
+      </p>
+
+      <div class="project-image">
+        <img
+          src="/images/velvet/1A0E5F07-2C5F-4948-92B5-AFCB4F97C6FE.jpg"
+          alt="A performer inside the indigo tent, projected color lighting the interior"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-row">
+        <span class="meta-label eyebrow">year</span>
+        <span class="meta-value">2021</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">medium</span>
+        <span class="meta-value">installation — indigo-dyed textile, projection mapping, audio-reactive</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">venue</span>
+        <span class="meta-value">Cucalorus Film Festival, Wilmington NC · 2021</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">collaborators</span>
+        <span class="meta-value">Racer Trash</span>
+      </div>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .hero-image {
+    background: var(--surface);
+    margin-bottom: var(--space-6);
+    min-height: 340px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+  .confirm-flag {
+    color: var(--error);
+    font-style: italic;
+  }
+  .process-flag {
+    margin-bottom: var(--space-4);
+  }
+  p {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+
+  .project-image {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: var(--space-4) 0;
+    overflow: hidden;
+  }
+  .content-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .image-pair .project-image {
+    margin: 0;
+  }
+
+  .project-meta {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-4);
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .meta-label {
+    color: var(--gold);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .meta-value {
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+    .image-pair { grid-template-columns: 1fr; }
+    .meta-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>

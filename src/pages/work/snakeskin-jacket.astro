@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Snakeskin Jacket" description="An interactive world built in Unity: a playable reconstruction of a film set, with the snakeskin jacket itself as the character you move through it.">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">experimental multimedia · 2025</span>
+      <h1 class="display-xl project-title">Snakeskin Jacket</h1>
+    </header>
+
+    <div class="hero-image">
+      <img
+        src="/images/snakeskin/IMG_5543.jpg"
+        alt="Snakeskin Jacket — Unity scene, the jacket rendered as the playable character"
+        class="hero-img"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <div class="project-body">
+
+      <p class="lead">
+        Snakeskin Jacket is an interactive world built in Unity: a playable reconstruction of the set from
+        <span class="confirm-flag">[CONFIRM: film title]</span>,
+        with the snakeskin jacket itself as the character you move through it. A film location becomes a game space. A costume becomes a body.
+      </p>
+
+      <p class="lead-sub">
+        It screened at the 2025 Cucalorus Film Festival as part of Dream Video Division's feature exhibition.
+        <span class="confirm-flag">[CONFIRM: anything you want to add about build process — otherwise this single line closes the page.]</span>
+      </p>
+
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-row">
+        <span class="meta-label eyebrow">year</span>
+        <span class="meta-value">2025</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">medium</span>
+        <span class="meta-value">experimental multimedia — interactive worldbuilding</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">tools</span>
+        <span class="meta-value">Unity</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">venue</span>
+        <span class="meta-value">Cucalorus Film Festival, 2025 · shown as part of Dream Video Division's feature exhibition</span>
+      </div>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .hero-image {
+    background: var(--surface);
+    margin-bottom: var(--space-6);
+    min-height: 340px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+  .lead-sub {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+  }
+  .confirm-flag {
+    color: var(--error);
+    font-style: italic;
+  }
+
+  .project-meta {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-4);
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .meta-label {
+    color: var(--gold);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .meta-value {
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+    .meta-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>

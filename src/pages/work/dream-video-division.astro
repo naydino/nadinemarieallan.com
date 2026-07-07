@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Festival run — pieces with images get a frame in the grid; pieces without
+// images (per handoff: "list it as a text row rather than an empty frame")
+// are rendered as plain text rows below the grid, in the order given.
+const withImage = [
+  {
+    title: 'Metropolis Unrestored',
+    venue: 'Fantastic Fest, Austin',
+    year: '2022',
+    role: 'My segment: audio-reactive visuals built in TouchDesigner, with an original score.',
+    image: '/images/metropolis/IMG_0530.JPG',
+    link: null,
+  },
+  {
+    title: 'Snakeskin Jacket',
+    venue: 'Cucalorus',
+    year: '2025',
+    role: "Shown as part of DVD's feature exhibition — full project page →",
+    image: '/images/snakeskin/IMG_5543.jpg',
+    link: '/work/snakeskin-jacket',
+  },
+  {
+    title: 'Nosfera2',
+    venue: 'Overlook Film Festival',
+    year: '2022',
+    role: "Shown as part of DVD's feature exhibition — full project page →",
+    image: '/images/nosfera2/IMG_8619.JPG',
+    link: '/work/nosfera2',
+  },
+];
+
+const textRows = [
+  { title: 'KOOL WORLD', venue: 'Toronto International Film Festival', year: '2024' },
+  { title: 'Midnight Dankness', venue: 'Toronto International Film Festival', year: '2022' },
+  { title: 'Avant-garde selections', venue: 'Locarno International Film Festival', year: '2022' },
+  { title: 'Closing night video installation', venue: 'Fantastic Fest', year: '2023' },
+  { title: 'Magnolia Remastered', venue: 'Alamo Drafthouse, Los Angeles', year: '2023' },
+  { title: 'The Wizard of Ozzz', venue: 'FuBaR Glitch Arts Festival, Zagreb', year: '2022' },
+  { title: 'Cayman Islands Public Access Television', venue: 'Two Bit Circus, Los Angeles', year: '2022' },
+  { title: 'Shrek Da Halls', venue: 'Coaxial Arts, Los Angeles', year: '2022' },
+  { title: 'Purple Rain Movie Remix', venue: 'Vidicon Video Art Festival', year: '2021' },
+  { title: 'Retrospective screening + panel "An Evening With Dream Video Division"', venue: 'Philadelphia Film Festival', year: '2022' },
+];
+---
+
+<BaseLayout title="Dream Video Division" description="Dream Video Division is a video art collective Nadine Marie Allan has worked with since 2021.">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">video &amp; performance · 2021–2025</span>
+      <h1 class="display-xl project-title">Dream Video Division</h1>
+    </header>
+
+    <div class="project-body">
+
+      <p class="lead">
+        Dream Video Division is a video art collective I have worked with since 2021.
+        <span class="confirm-flag">[CONFIRM: one line describing what DVD does — draft: "The work remixes and reanimates film culture — restorations that aren't, remixes that go too far, screened where cinema takes itself seriously."]</span>
+        Between 2021 and 2025 the work showed at the Toronto International Film Festival, Locarno, Fantastic Fest, the Philadelphia Film Festival, Overlook, and Cucalorus. The pieces are collectively authored. My contributions run through TouchDesigner visuals, original music, AR, and physical fabrication.
+      </p>
+
+      <hr class="type-divider" />
+
+      <div class="section-divider">
+        <span class="eyebrow">the festival run</span>
+      </div>
+
+      <div class="festival-grid">
+        {withImage.map((piece) => (
+          <div class="festival-item">
+            <div class="project-image">
+              <img
+                src={piece.image}
+                alt={piece.title}
+                class="content-img"
+                onerror="this.style.display='none'"
+              />
+            </div>
+            <div class="festival-caption">
+              <span class="festival-title">{piece.title}</span>
+              <span class="festival-meta">{piece.venue} · {piece.year}</span>
+              {piece.link ? (
+                <a href={piece.link} class="cta-link festival-role">{piece.role}</a>
+              ) : (
+                <span class="caption festival-role">{piece.role}</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <ul class="festival-list">
+        {textRows.map((row) => (
+          <li class="festival-row">
+            <span class="festival-row-title">{row.title}</span>
+            <span class="festival-row-meta">{row.venue} · {row.year}</span>
+          </li>
+        ))}
+        <li class="festival-row festival-row--dev">
+          <span class="festival-row-title">POP POP</span>
+          <span class="festival-row-meta">feature film · in development</span>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-row">
+        <span class="meta-label eyebrow">years active</span>
+        <span class="meta-value">2021–2025</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">medium</span>
+        <span class="meta-value">video &amp; performance — collectively authored</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">my contributions</span>
+        <span class="meta-value">TouchDesigner visuals · original music · AR · physical fabrication</span>
+      </div>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+  .confirm-flag {
+    color: var(--error);
+    font-style: italic;
+  }
+  .type-divider {
+    margin: var(--space-4) 0;
+  }
+
+  .section-divider {
+    margin: var(--space-5) 0 var(--space-3);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+  }
+
+  .festival-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    margin: var(--space-3) 0 var(--space-5);
+  }
+  .festival-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .project-image {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: 0 0 var(--space-1);
+    overflow: hidden;
+  }
+  .content-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .festival-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .festival-title {
+    font-family: var(--font-mono);
+    font-style: italic;
+    font-weight: var(--w-light);
+    font-size: var(--text-base);
+    color: var(--ink);
+  }
+  .festival-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: var(--ls-tight);
+  }
+  .festival-role {
+    margin-top: 2px;
+    display: inline-block;
+  }
+  a.festival-role {
+    font-size: var(--text-xs);
+  }
+
+  .festival-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .festival-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+  }
+  .festival-row-title {
+    font-size: var(--text-base);
+    color: var(--ink);
+  }
+  .festival-row-meta {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .festival-row--dev {
+    border-bottom: none;
+    font-style: italic;
+  }
+  .festival-row--dev .festival-row-title,
+  .festival-row--dev .festival-row-meta {
+    color: var(--muted);
+  }
+
+  .project-meta {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-4);
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .meta-label {
+    color: var(--gold);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .meta-value {
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+
+  @media (max-width: 700px) {
+    .festival-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+    .festival-grid {
+      grid-template-columns: 1fr;
+    }
+    .festival-row {
+      flex-direction: column;
+      gap: 2px;
+    }
+    .meta-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>

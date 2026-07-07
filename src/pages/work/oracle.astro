@@ -29,6 +29,48 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <em>The Oracle That Wears Us</em> is an interactive AI installation structured as a ritual encounter. It asks what it feels like to be interpreted by a system that cannot explain itself.
       </p>
 
+      <div class="sequence-preview">
+        <span class="eyebrow">the encounter, at a glance</span>
+        <ol class="sequence-list">
+          <li class="sequence-step">
+            <span class="sequence-state">IDLE</span>
+            <span class="sequence-beat">The installation waits, dark and silent, for a visitor to approach.</span>
+          </li>
+          <li class="sequence-step">
+            <span class="sequence-state">AWAKENING</span>
+            <span class="sequence-beat">The visitor settles into place; the ritual begins.</span>
+          </li>
+          <li class="sequence-step">
+            <span class="sequence-state">CAPTURE</span>
+            <span class="sequence-beat">A portrait is taken — the image the oracle will later transform.</span>
+          </li>
+          <li class="sequence-step">
+            <span class="sequence-state">LISTENING</span>
+            <span class="sequence-beat">Over four turns, the system listens — not just to words, but to how they're said.</span>
+          </li>
+          <li class="sequence-step">
+            <span class="sequence-state">PROCESSING</span>
+            <span class="sequence-beat">The pipeline reads the acoustic texture; an arc spinner signals deliberation, not delay.</span>
+          </li>
+          <li class="sequence-step">
+            <span class="sequence-state">SPEAKING</span>
+            <span class="sequence-beat">The oracle speaks its reading aloud, in a synthesised voice.</span>
+          </li>
+          <li class="sequence-step">
+            <span class="sequence-state">INSCRIBING</span>
+            <span class="sequence-beat">A CNC plotter draws the visitor's symbolic mark onto the shared cloth.</span>
+          </li>
+          <li class="sequence-step">
+            <span class="sequence-state">RECEIPT</span>
+            <span class="sequence-beat">A thermal receipt prints, recording exactly what the machine perceived.</span>
+          </li>
+          <li class="sequence-step">
+            <span class="sequence-state">RESET</span>
+            <span class="sequence-beat">The installation resets, dark again, for the next visitor.</span>
+          </li>
+        </ol>
+      </div>
+
       <hr class="type-divider" />
 
       <p>
@@ -334,6 +376,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     color: var(--mid);
     margin-bottom: var(--space-4);
   }
+
+  .sequence-preview {
+    background: var(--surface);
+    border-left: 2px solid var(--gold);
+    padding: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .sequence-list {
+    list-style: none;
+    margin: var(--space-2) 0 0;
+    padding: 0;
+  }
+  .sequence-step {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: var(--space-3);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .sequence-step:last-child {
+    border-bottom: none;
+  }
+  .sequence-state {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: var(--w-regular);
+    letter-spacing: var(--ls-tight);
+    color: var(--ink);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .sequence-beat {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+  }
+
   .type-divider {
     margin: var(--space-4) 0;
   }
@@ -477,6 +558,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
     }
     .state-flow { gap: 2px; }
+    .sequence-step { grid-template-columns: 1fr; gap: 2px; padding: var(--space-2) 0; }
     .possession-strip { grid-template-columns: repeat(2, 1fr); }
     .image-pair { grid-template-columns: 1fr; }
     .meta-row { grid-template-columns: 1fr; gap: 4px; }

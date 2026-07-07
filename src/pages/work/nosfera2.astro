@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+// NADINE: images already existed in public/images/nosfera2/ (IMG_8619, IMG_8628, IMG_8665, IMG_8685)
+// so the handoff's "[CONFIRM: exact path]" placeholder appears already resolved — using what's in place.
+// Six .mov files also live in that folder (2.7–10.5MB, unoptimized phone exports) — per the handoff,
+// video integration waits for Vimeo, so this page is stills-only for now.
+---
+
+<BaseLayout title="Nosfera2" description="A shelf of ordinary groceries hiding a second life — each product carrying an alternate vampire-themed label, visible only through an AR filter.">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">installation · 2022</span>
+      <h1 class="display-xl project-title">Nosfera2</h1>
+    </header>
+
+    <div class="hero-image">
+      <img
+        src="/images/nosfera2/IMG_8619.JPG"
+        alt="Nosfera2 — grocery shelf installation with AR-enabled product boxes"
+        class="hero-img"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <div class="project-body">
+
+      <p class="lead">
+        Nosfera2 was a shelf of ordinary groceries hiding a second life. Each product — margarine, baking soda, dish soap, a DVD of Twilight — carried an alternate vampire-themed label, visible only through an AR filter. Point your phone at the shelf and the brands confess.
+      </p>
+
+      <p class="caption shelf-caption">
+        <span class="confirm-flag">[CONFIRM: exact brand list — I Can't Believe It's Not Butter, Arm &amp; Hammer, Mtn Dew, Dawn, (raisins brand?), Twilight DVD, others]</span>
+      </p>
+
+      <div class="image-pair">
+        <div class="project-image">
+          <img
+            src="/images/nosfera2/IMG_8628.JPG"
+            alt="Nosfera2 — AR filter revealing a product's vampiric alternate label"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+        <div class="project-image">
+          <img
+            src="/images/nosfera2/IMG_8665.JPG"
+            alt="Nosfera2 — The Sharper Teeth product signage and AR filter instructions"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+
+      <p>
+        Alongside the shelf, miniature screens embedded in custom product boxes played looping video art — our own commercials for products that don't exist. I built the AR experience, the concept, and the physical installation; the video content was made with Dream Video Division collaborators. Shown at the Overlook Film Festival, New Orleans, 2022.
+      </p>
+
+      <div class="project-image">
+        <img
+          src="/images/nosfera2/IMG_8685.JPG"
+          alt="Nosfera2 — installation detail"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-row">
+        <span class="meta-label eyebrow">year</span>
+        <span class="meta-value">2022</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">medium</span>
+        <span class="meta-value">installation — AR + physical fabrication</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">venue</span>
+        <span class="meta-value">Overlook Film Festival, New Orleans · 2022</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label eyebrow">collaborators</span>
+        <span class="meta-value">Dream Video Division (video content)</span>
+      </div>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .hero-image {
+    background: var(--surface);
+    margin-bottom: var(--space-6);
+    min-height: 340px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+  .confirm-flag {
+    color: var(--error);
+    font-style: italic;
+  }
+  .shelf-caption {
+    margin-bottom: var(--space-4);
+  }
+  p {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
+  }
+
+  .project-image {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: var(--space-4) 0;
+    overflow: hidden;
+  }
+  .content-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .image-pair .project-image {
+    margin: 0;
+  }
+
+  .project-meta {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-4);
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .meta-label {
+    color: var(--gold);
+    align-self: start;
+    padding-top: 2px;
+  }
+  .meta-value {
+    font-weight: var(--w-light);
+    color: var(--mid);
+    line-height: var(--lh-body);
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+    .image-pair { grid-template-columns: 1fr; }
+    .meta-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>

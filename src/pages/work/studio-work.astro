@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+// Images pulled from fine-art/, cooks garden/, and progress gallery/ as a representative sequence —
+// swap any of these for a different selection if you'd rather feature other pieces.
+const images = [
+  { src: '/images/fine-art/soft%20sculptures/IMG_0760.jpg', alt: 'Soft sculpture installation' },
+  { src: '/images/fine-art/IMG_1128.jpg', alt: 'Natural pigment disc installation' },
+  { src: '/images/fine-art/cyanotype%20collage/IMG_7638.jpg', alt: 'Cyanotype collage' },
+  { src: '/images/cooks%20garden/IMG_9229.jpg', alt: 'Fabric and wire hanging installation' },
+  { src: '/images/progress%20gallery/IMG_1834.jpg', alt: 'Mixed media collage, work in progress' },
+];
+---
+
+<BaseLayout title="studio work" description="Fine art and works on paper — natural pigments, soft sculpture, cyanotype, and mixed media.">
+  <article class="project">
+
+    <header class="project-header">
+      <span class="eyebrow">fine art</span>
+      <h1 class="display-xl project-title">studio work</h1>
+    </header>
+
+    <div class="project-body">
+
+      <p class="lead confirm-flag">[CONFIRM: studio work intro — Nadine to supply or approve]</p>
+
+      <div class="image-sequence">
+        {images.map((img) => (
+          <div class="project-image">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="content-img"
+              onerror="this.closest('.project-image').style.display='none'"
+            />
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--page-padding-x) var(--space-8);
+  }
+
+  .project-header {
+    margin-bottom: var(--space-5);
+  }
+  .project-title {
+    margin-top: var(--space-2);
+  }
+
+  .project-body {
+    margin-bottom: var(--space-7);
+  }
+  .lead {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-4);
+  }
+  .confirm-flag {
+    color: var(--error);
+    font-style: italic;
+  }
+
+  .image-sequence {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .project-image {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .content-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
+    }
+  }
+</style>
