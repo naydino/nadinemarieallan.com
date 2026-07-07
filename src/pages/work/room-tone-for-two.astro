@@ -2,18 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Snakeskin Jacket" description="An interactive world built in Unity: a playable reconstruction of a film set, with the snakeskin jacket itself as the character you move through it.">
+<BaseLayout title="Room Tone (For Two)" description="A motel sequence from Wild at Heart, emptied of every human body and rebuilt in Unity as a playable environment — the audience controls the one thing left behind, the snakeskin jacket itself.">
   <article class="project">
 
     <header class="project-header">
       <span class="eyebrow">experimental multimedia · 2025</span>
-      <h1 class="display-xl project-title">Snakeskin Jacket</h1>
+      <h1 class="display-xl project-title">Room Tone (For Two)</h1>
+      <p class="display-md hook">What happens to desire when you erase the actors?</p>
     </header>
 
     <div class="hero-image">
       <img
         src="/images/snakeskin/IMG_5543.jpg"
-        alt="Snakeskin Jacket — Unity scene, the jacket rendered as the playable character"
+        alt="Unity editor showing the reconstructed motel scene and the snakeskin jacket rendered as the playable character"
         class="hero-img"
         onerror="this.style.display='none'"
       />
@@ -22,14 +23,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="project-body">
 
       <p class="lead">
-        Snakeskin Jacket is an interactive world built in Unity: a playable reconstruction of the set from
-        <span class="confirm-flag">[CONFIRM: film title]</span>,
-        with the snakeskin jacket itself as the character you move through it. A film location becomes a game space. A costume becomes a body.
+        A critic once wrote that Lynch was never really interested in his characters — only in his iconography. I wanted to test that idea by taking it literally.
       </p>
 
-      <p class="lead-sub">
-        It screened at the 2025 Cucalorus Film Festival as part of Dream Video Division's feature exhibition.
-        <span class="confirm-flag">[CONFIRM: anything you want to add about build process — otherwise this single line closes the page.]</span>
+      <p>
+        Working from a motel sequence in <em>Wild at Heart</em>, I removed every human body using generative AI tools, leaving only what the critique said mattered anyway: the fire, the candy-heart necklace, the horse-head radio statue, the objects that used to surround love and danger. Those emptied frames became 3D environments, rebuilt in Unity as a playable game where the audience controls the one thing left behind — the snakeskin jacket itself. A separate 3-minute short recuts the same material as film.
+      </p>
+
+      <blockquote class="pull-quote">
+        "THIS is a snakeskin jacket. And for me; it's a symbol of my individuality. And my belief in personal freedom."
+      </blockquote>
+      <p class="caption quote-attribution">Sailor Ripley, early in <em>Wild at Heart</em>. Without Sailor, the line has nowhere to land.</p>
+
+      <p>
+        Strip out the characters and the iconography doesn't go empty. It goes strange. Emotion collapses into texture, and texture asks to be filled back in. The player becomes the absent body, projecting meaning onto objects that have forgotten their lines — desire without bodies, danger without villains, the residual heat of a scene after everyone has left the frame.
       </p>
 
     </div>
@@ -41,11 +48,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">medium</span>
-        <span class="meta-value">experimental multimedia — interactive worldbuilding</span>
+        <span class="meta-value">experimental multimedia — playable Unity environment + 3-minute film short</span>
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">tools</span>
-        <span class="meta-value">Unity</span>
+        <span class="meta-value">Unity · generative AI image editing</span>
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">venue</span>
@@ -68,6 +75,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
   .project-title {
     margin-top: var(--space-2);
+  }
+  .hook {
+    margin-top: var(--space-3);
+    max-width: 520px;
   }
 
   .hero-image {
@@ -93,16 +104,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     color: var(--mid);
     margin-bottom: var(--space-3);
   }
-  .lead-sub {
+  p {
     font-family: var(--font-mono);
     font-size: var(--text-base);
     font-weight: var(--w-light);
     line-height: var(--lh-body);
     color: var(--mid);
+    margin-bottom: var(--space-3);
   }
-  .confirm-flag {
-    color: var(--error);
-    font-style: italic;
+  .quote-attribution {
+    margin-top: calc(-1 * var(--space-2));
   }
 
   .project-meta {
