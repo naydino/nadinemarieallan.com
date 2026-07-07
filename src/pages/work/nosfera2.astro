@@ -1,23 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-// NADINE: images already existed in public/images/nosfera2/ (IMG_8619, IMG_8628, IMG_8665, IMG_8685)
-// so the handoff's "[CONFIRM: exact path]" placeholder appears already resolved — using what's in place.
-// Six .mov files also live in that folder (2.7–10.5MB, unoptimized phone exports) — per the handoff,
-// video integration waits for Vimeo, so this page is stills-only for now.
+// Six .mov files also live in public/images/nosfera2/ (2.7-10.5MB, unoptimized phone
+// exports); video integration waits for Vimeo, so this page is stills-only for now.
 ---
 
-<BaseLayout title="Nosfera2" description="A shelf of ordinary groceries hiding a second life — each product carrying an alternate vampire-themed label, visible only through an AR filter.">
+<BaseLayout title="Sharper Teeth (AR installation)" description="An AR installation of ordinary products hiding an alternate consumerist goal, each carrying a vampire-themed label visible only through an AR filter.">
   <article class="project">
 
     <header class="project-header">
       <span class="eyebrow">installation · 2022</span>
-      <h1 class="display-xl project-title">Nosfera2</h1>
+      <h1 class="display-xl project-title">Sharper Teeth (AR installation)</h1>
     </header>
 
     <div class="hero-image">
       <img
         src="/images/nosfera2/IMG_8619.JPG"
-        alt="Nosfera2 — grocery shelf installation with AR-enabled product boxes"
+        alt="Sharper Teeth: grocery shelf installation with AR-enabled product boxes"
         class="hero-img"
         onerror="this.style.display='none'"
       />
@@ -26,18 +24,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="project-body">
 
       <p class="lead">
-        Nosfera2 was a shelf of ordinary groceries hiding a second life. Each product — margarine, baking soda, dish soap, a DVD of Twilight — carried an alternate vampire-themed label, visible only through an AR filter. Point your phone at the shelf and the brands confess.
+        Sharper Teeth was an AR installation of ordinary products hiding an alternate consumerist goal. Each product (margarine, baking soda, dish soap, a DVD of Twilight) carried an alternate vampire-themed label, visible only through an AR filter. Point your phone at the shelf and the brands confess.
       </p>
 
       <p class="caption shelf-caption">
-        <span class="confirm-flag">[CONFIRM: exact brand list — I Can't Believe It's Not Butter, Arm &amp; Hammer, Mtn Dew, Dawn, (raisins brand?), Twilight DVD, others]</span>
+        Products included I Can't Believe It's Not Butter, Arm &amp; Hammer, Mtn Dew, Dawn, Sun-Maid raisins, and a Twilight DVD, among others.
       </p>
 
       <div class="image-pair">
         <div class="project-image">
           <img
             src="/images/nosfera2/IMG_8628.JPG"
-            alt="Nosfera2 — AR filter revealing a product's vampiric alternate label"
+            alt="Sharper Teeth: AR filter revealing a product's vampiric alternate label"
             class="content-img"
             onerror="this.style.display='none'"
           />
@@ -45,7 +43,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="project-image">
           <img
             src="/images/nosfera2/IMG_8665.JPG"
-            alt="Nosfera2 — The Sharper Teeth product signage and AR filter instructions"
+            alt="Sharper Teeth: product signage and AR filter instructions"
             class="content-img"
             onerror="this.style.display='none'"
           />
@@ -53,13 +51,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
 
       <p>
-        Alongside the shelf, miniature screens embedded in custom product boxes played looping video art — our own commercials for products that don't exist. I built the AR experience, the concept, and the physical installation; the video content was made with Dream Video Division collaborators. Shown at the Overlook Film Festival, New Orleans, 2022.
+        Alongside the shelf, miniature screens embedded in custom product boxes played looping video art, our own commercials for products that don't exist. I built the AR experience, the concept, and the physical installation; the video content was made with Dream Video Division collaborators. Shown at the Overlook Film Festival, New Orleans, 2022.
       </p>
 
       <div class="project-image">
         <img
           src="/images/nosfera2/IMG_8685.JPG"
-          alt="Nosfera2 — installation detail"
+          alt="Sharper Teeth: installation detail"
           class="content-img"
           onerror="this.style.display='none'"
         />
@@ -74,7 +72,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">medium</span>
-        <span class="meta-value">installation — AR + physical fabrication</span>
+        <span class="meta-value">installation: AR + physical fabrication</span>
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">venue</span>
@@ -125,10 +123,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     line-height: var(--lh-body);
     color: var(--mid);
     margin-bottom: var(--space-3);
-  }
-  .confirm-flag {
-    color: var(--error);
-    font-style: italic;
   }
   .shelf-caption {
     margin-bottom: var(--space-4);

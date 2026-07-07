@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-// An ongoing collection page — Nadine plans to add more audio/visual performances here
+// An ongoing collection page. Nadine plans to add more audio/visual performances here
 // over time. Structured as a list so new entries just append to `highlights`.
 const highlights = [
   {
@@ -13,7 +13,7 @@ const highlights = [
 ];
 ---
 
-<BaseLayout title="Audio/Visual Explorations" description="Live audio-visual performances — projection-mapped video played and driven by an electronic zither.">
+<BaseLayout title="Audio/Visual Explorations" description="Live audio-visual performances: projection-mapped video played and driven by an electronic zither.">
   <article class="project">
 
     <header class="project-header">
@@ -33,7 +33,7 @@ const highlights = [
             <div class="project-image">
               <img
                 src={h.image}
-                alt={`${h.title} — live AV performance`}
+                alt={`${h.title}, live AV performance`}
                 class="content-img"
                 onerror="this.style.display='none'"
               />

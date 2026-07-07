@@ -1,17 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-// Images pulled from fine-art/, cooks garden/, and progress gallery/ as a representative sequence —
-// swap any of these for a different selection if you'd rather feature other pieces.
 const images = [
   { src: '/images/fine-art/soft%20sculptures/IMG_0760.jpg', alt: 'Soft sculpture installation' },
   { src: '/images/fine-art/IMG_1128.jpg', alt: 'Natural pigment disc installation' },
-  { src: '/images/fine-art/cyanotype%20collage/IMG_7638.jpg', alt: 'Cyanotype collage' },
+  { src: '/images/fine-art/cyanotype%20collage/IMG_8859.JPG', alt: 'Cyanotype feather collage on stitched fabric' },
   { src: '/images/cooks%20garden/IMG_9229.jpg', alt: 'Fabric and wire hanging installation' },
   { src: '/images/progress%20gallery/IMG_1834.jpg', alt: 'Mixed media collage, work in progress' },
+  { src: '/images/fine-art/cyanotype%20collage/IMG_0302.jpg', alt: 'Indigo-dyed laser-cut relief, gate and scroll forms' },
+  { src: '/images/fine-art/natural%20pigments/IMG_1462.jpg', alt: 'Natural pigment swatches, labeled by source: scorched limestone, cochineal, indigo, wild grape' },
+  { src: '/images/fine-art/natural%20pigments/IMG_6547.jpg', alt: 'Studio still life: hand-labeled pigment bottles, mortar and pestle, work in progress' },
+  { src: '/images/fine-art/soft%20sculptures/972212AC-5E33-49F5-A541-A9CB24E35F14.jpg', alt: 'Soft sculpture, wrapped fabric tendrils around a dyed form' },
 ];
 ---
 
-<BaseLayout title="studio work" description="Fine art and works on paper — natural pigments, soft sculpture, cyanotype, and mixed media.">
+<BaseLayout title="studio work" description="Fine art and works on paper: natural pigments, soft sculpture, cyanotype, and mixed media.">
   <article class="project">
 
     <header class="project-header">
@@ -21,9 +23,15 @@ const images = [
 
     <div class="project-body">
 
-      <p class="lead confirm-flag">[CONFIRM: studio work intro — Nadine to supply or approve]</p>
+      <p class="lead">
+        Every material I've worked in (pigment, fiber, code) has been a way of asking the same question: what does a system do to a thing when it tries to translate it into something else. This page is where that question started, before it had a name.
+      </p>
 
-      <div class="image-sequence">
+      <p>
+        The early pieces were dyed with indigo and cochineal, pigments foraged straight from the land (black walnut, oak gall), built from what was already discarded. Soft sculpture meant to be touched, not looked at from across a room. I was writing then about plastic as a veil we've agreed to wear without asking what it costs the body underneath it. I was also annoyed at myself for making more physical objects in a world that already has enough of them. That's where the real question started: how to take up space, without actually taking up space. Projection mapping and technology became one answer to that, layered in alongside the recycled materials, never losing the thread back to origin. I still work this way because it keeps me curious. It's the version of a practice that sends me outside with open eyes, looking for what's already there.
+      </p>
+
+      <div class="image-grid">
         {images.map((img) => (
           <div class="project-image">
             <img
@@ -64,17 +72,22 @@ const images = [
     font-weight: var(--w-light);
     line-height: var(--lh-body);
     color: var(--mid);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
   }
-  .confirm-flag {
-    color: var(--error);
-    font-style: italic;
+  p {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--w-light);
+    line-height: var(--lh-body);
+    color: var(--mid);
+    margin-bottom: var(--space-3);
   }
 
-  .image-sequence {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    margin-top: var(--space-5);
   }
   .project-image {
     background: var(--surface);
@@ -83,10 +96,16 @@ const images = [
   }
   .content-img {
     width: 100%;
-    height: auto;
+    height: 220px;
+    object-fit: cover;
     display: block;
   }
 
+  @media (max-width: 700px) {
+    .image-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
   @media (max-width: 600px) {
     .project {
       padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
