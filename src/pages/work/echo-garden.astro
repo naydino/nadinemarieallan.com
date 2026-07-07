@@ -26,8 +26,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
 
       <p>
-        Visitors could add to it too. Scanning the installation opened a companion page on their phone, a separate app built for the piece, where they could type directly into the word wall. Echo Garden became a community garden this way: not one voice growing the piece, but everyone who passed through it, each contribution folding into the next visitor's view of a digital garden of words that kept growing after they left.
+        Visitors could add to it too. A prompt at the edge of the installation read "add a thought, type below or scan QR": type directly into the piece, or scan the code to add from your own phone. A button marked Plant submits it. Echo Garden became a community garden this way: not one voice growing the piece, but everyone who passed through it, each thought folding into the next visitor's view of a digital garden that kept growing after they left.
       </p>
+
+      <div class="image-pair">
+        <div class="project-image">
+          <img
+            src="/images/echo%20garden/IMG_5179.jpg"
+            alt="Full wall projection of Echo Garden, with the add-a-thought prompt and QR code visible"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+        <div class="project-image">
+          <img
+            src="/images/echo%20garden/3F5BDE58-F197-4D1D-9D9B-10FB5EE74EE1.jpg"
+            alt="Close detail of the shifting text-character grid"
+            class="content-img"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+
+      <div class="project-image">
+        <img
+          src="/images/echo%20garden/4180A380-617D-4A69-9B96-DA031F63498B.jpg"
+          alt="Nadine standing beside the installation"
+          class="content-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
 
       <p>
         Shown at IADE – Universidade Europeia, Lisbon, 2025.
@@ -103,6 +131,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     margin-bottom: var(--space-3);
   }
 
+  .project-image {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: var(--space-4) 0;
+    overflow: hidden;
+  }
+  .content-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .image-pair .project-image {
+    margin: 0;
+  }
+
   .project-meta {
     border-top: 1px solid var(--border);
     padding-top: var(--space-4);
@@ -131,6 +181,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     .project {
       padding: var(--space-5) var(--page-padding-x-sm) var(--space-7);
     }
+    .image-pair { grid-template-columns: 1fr; }
     .meta-row { grid-template-columns: 1fr; gap: 4px; }
   }
 </style>

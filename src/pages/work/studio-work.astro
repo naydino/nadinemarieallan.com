@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const images = [
+  { src: '/images/fine-art/IMG_2508.jpg', alt: 'Nadine in the studio beneath a layered landscape painting with a magnolia bloom' },
   { src: '/images/fine-art/soft%20sculptures/IMG_0760.jpg', alt: 'Soft sculpture installation' },
   { src: '/images/fine-art/IMG_1128.jpg', alt: 'Natural pigment disc installation' },
   { src: '/images/fine-art/cyanotype%20collage/IMG_8859.JPG', alt: 'Cyanotype feather collage on stitched fabric' },
@@ -10,6 +11,10 @@ const images = [
   { src: '/images/fine-art/natural%20pigments/IMG_1462.jpg', alt: 'Natural pigment swatches, labeled by source: scorched limestone, cochineal, indigo, wild grape' },
   { src: '/images/fine-art/natural%20pigments/IMG_6547.jpg', alt: 'Studio still life: hand-labeled pigment bottles, mortar and pestle, work in progress' },
   { src: '/images/fine-art/soft%20sculptures/972212AC-5E33-49F5-A541-A9CB24E35F14.jpg', alt: 'Soft sculpture, wrapped fabric tendrils around a dyed form' },
+  { src: '/images/fine-art/IMG_7304.jpg', alt: 'Painting of an arched garden window with a magpie perched on a hose nozzle' },
+  { src: '/images/fine-art/IMG_7306.jpg', alt: 'Detail of the magpie from the arched garden window painting' },
+  { src: '/images/fine-art/IMG_7447.jpg', alt: 'Painting of a blue arched doorway with a checkered floor and a smiling doorknob' },
+  { src: '/images/fine-art/IMG_8008.jpg', alt: 'Painting of a gold coin pendant on a chain over a glitch-distorted background' },
 ];
 ---
 
@@ -17,9 +22,22 @@ const images = [
   <article class="project">
 
     <header class="project-header">
-      <span class="eyebrow">fine art</span>
+      <span class="eyebrow">fine art · ongoing</span>
       <h1 class="display-xl project-title">studio work</h1>
     </header>
+
+    <div class="image-grid">
+      {images.map((img) => (
+        <div class="project-image">
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="content-img"
+            onerror="this.closest('.project-image').style.display='none'"
+          />
+        </div>
+      ))}
+    </div>
 
     <div class="project-body">
 
@@ -30,19 +48,6 @@ const images = [
       <p>
         The early pieces were dyed with indigo and cochineal, pigments foraged straight from the land (black walnut, oak gall), built from what was already discarded. Soft sculpture meant to be touched, not looked at from across a room. I was writing then about plastic as a veil we've agreed to wear without asking what it costs the body underneath it. I was also annoyed at myself for making more physical objects in a world that already has enough of them. That's where the real question started: how to take up space, without actually taking up space. Projection mapping and technology became one answer to that, layered in alongside the recycled materials, never losing the thread back to origin. I still work this way because it keeps me curious. It's the version of a practice that sends me outside with open eyes, looking for what's already there.
       </p>
-
-      <div class="image-grid">
-        {images.map((img) => (
-          <div class="project-image">
-            <img
-              src={img.src}
-              alt={img.alt}
-              class="content-img"
-              onerror="this.closest('.project-image').style.display='none'"
-            />
-          </div>
-        ))}
-      </div>
 
     </div>
 
@@ -87,7 +92,7 @@ const images = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-3);
-    margin-top: var(--space-5);
+    margin-bottom: var(--space-6);
   }
   .project-image {
     background: var(--surface);
