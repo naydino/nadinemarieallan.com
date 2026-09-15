@@ -2,15 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const heroSrc = '/images/fine-art/natural pigments/ink-collage-popo-catalogue_BG_removed.png';
-const heroMaskStyle = `-webkit-mask-image:url('${heroSrc}'); mask-image:url('${heroSrc}');`;
 ---
 
 <BaseLayout title="home">
   <section class="hero" style={`background-image:url('${heroSrc}')`}>
-    <div class="hero-duotone" aria-hidden="true">
-      <div class="hero-duotone-shadow" style={heroMaskStyle}></div>
-      <div class="hero-duotone-highlight" style={heroMaskStyle}></div>
-    </div>
     <div class="hero-text">
       <span class="eyebrow">artist & creative technologist · lisbon</span>
       <h1 class="display-xl hero-statement">
@@ -43,35 +38,6 @@ const heroMaskStyle = `-webkit-mask-image:url('${heroSrc}'); mask-image:url('${h
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
-  .hero-duotone {
-    position: absolute;
-    inset: 0;
-    transition: opacity var(--transition-slow);
-  }
-  .hero:hover .hero-duotone {
-    opacity: 0;
-  }
-  .hero-duotone-shadow,
-  .hero-duotone-highlight {
-    position: absolute;
-    inset: 0;
-    -webkit-mask-size: cover;
-    mask-size: cover;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-  }
-  .hero-duotone-shadow {
-    background: var(--duo-shadow);
-    -webkit-mask-mode: alpha;
-    mask-mode: alpha;
-  }
-  .hero-duotone-highlight {
-    background: var(--duo-highlight);
-    -webkit-mask-mode: luminance;
-    mask-mode: luminance;
   }
   .hero-text {
     position: absolute;

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import DuotoneImage from '../components/DuotoneImage.astro';
 
 const groups = [
   {
@@ -35,6 +34,7 @@ const groups = [
     projects: [
       { title: '#0000FF Velvet', slug: 'velvet', medium: 'installation', venue: 'Cucalorus Film Festival', image: '/images/velvet/IMG_0075.jpg', live: true },
       { title: 'Paper Trail', slug: 'paper-trail', medium: 'installation', venue: 'Cucalorus Film Festival', image: '/images/velvet/8613B089-99ED-43F3-A72E-4778BBA2A50C.jpg', live: true },
+      { title: 'Untitled Walk', slug: 'untitled-walk', medium: 'installation', venue: 'Spring Street Studio', image: '/images/Untitled_walk_april_2021/IMG_9717.jpg', live: true },
       { title: 'Audio/Visual Explorations', slug: 'digital-debris', medium: 'video-performance', venue: 'Digital Debris Gallery', image: '/images/digital-debris/60FC88AD-A873-4275-B0B4-1F003B61B431.jpg', live: true },
     ],
   },
@@ -58,7 +58,7 @@ const groups = [
                   data-medium={project.medium}
                 >
                   <div class="cell-image">
-                    <DuotoneImage src={project.image} alt={project.title} class="cell-img" />
+                    <img src={project.image} alt={project.title} class="cell-img" loading="lazy" onerror="this.style.display='none'" />
                   </div>
                   <div class="cell-meta">
                     <span class="year-label">{project.yearLabel || group.year}</span>
@@ -75,7 +75,7 @@ const groups = [
                   data-medium={project.medium}
                 >
                   <div class="cell-image">
-                    <DuotoneImage src={project.image} alt={project.title} class="cell-img" />
+                    <img src={project.image} alt={project.title} class="cell-img" loading="lazy" onerror="this.style.display='none'" />
                   </div>
                   <div class="cell-meta">
                     <span class="year-label">{project.yearLabel || group.year}</span>
@@ -98,7 +98,7 @@ const groups = [
 
 <style>
   .work {
-    max-width: var(--content-max);
+    max-width: var(--site-max);
     margin: 0 auto;
     padding: var(--space-6) var(--page-padding-x) var(--space-7);
   }
@@ -117,8 +117,18 @@ const groups = [
 
   .cells-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-3);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4) var(--space-3);
+  }
+  @media (min-width: 1280px) {
+    .cells-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: 900px) {
+    .cells-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   .project-cell {
     display: block;
@@ -135,7 +145,13 @@ const groups = [
     background: var(--surface);
     overflow: hidden;
     margin-bottom: var(--space-2);
-    min-height: 200px;
+    aspect-ratio: 4 / 5;
+  }
+  .cell-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .cell-meta {
     padding: 0 2px;

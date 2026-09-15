@@ -28,6 +28,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         Overhead, a second Cucalorus installation answered #0000FF Velvet in a different material: dozens of rice-paper forms, hand-cut and hung on wire beneath a canopy of chicken wire, each catching a projected fragment of a detective film. Visitors walked underneath rather than stepped inside; their footsteps drove the visuals, breaking a scene into pieces and reassembling it as they moved.
       </p>
 
+      <div class="project-video">
+        <video
+          class="content-vid"
+          poster="/images/velvet/Paper_trail/Paper_Trail_Documentation_poster.jpg"
+          aria-label="Paper Trail, documentation video"
+          controls
+          playsinline
+          preload="metadata"
+        >
+          <source src="/images/velvet/Paper_trail/Paper_Trail_Documentation.mp4" type="video/mp4" />
+        </video>
+      </div>
+
       <div class="image-pair">
         <div class="project-image">
           <img
@@ -127,6 +140,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  .project-video {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    max-width: 420px;
+    margin: var(--space-4) auto;
+    overflow: hidden;
+  }
+  .content-vid {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
   }
 
   .image-pair {

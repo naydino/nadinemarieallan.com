@@ -2,18 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Echo Garden" description="A generative p5.js environment that grows in response to time and interaction.">
+<BaseLayout title="Untitled Walk" description="Untitled Walk, installation, 2021. Rice paper, projection mapping. Spring Street Studio, Los Angeles.">
   <article class="project">
 
     <header class="project-header">
-      <span class="eyebrow">generative media · 2025</span>
-      <h1 class="display-xl project-title">Echo Garden</h1>
+      <span class="eyebrow">installation · 2021</span>
+      <h1 class="display-xl project-title">Untitled Walk</h1>
     </header>
 
     <div class="hero-image">
       <img
-        src="/images/echo-garden/hero.jpg"
-        alt="Echo Garden: dense grid of shifting text characters resolving into a figure"
+        src="/images/Untitled_walk_april_2021/IMG_9717.jpg"
+        alt="A person in silhouette faces a dark wall of hanging rice-paper squares, each lit with projected footage of leaves and blossoms"
         class="hero-img"
         onerror="this.style.display='none'"
       />
@@ -22,76 +22,55 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="project-body">
 
       <p class="lead">
-        Echo Garden is a generative p5.js environment that grows in response to time and interaction. Text stands in for pixels: words, stray phrases, fragments left behind by whoever passed through, densifying into a shifting character grid until a figure resolves out of it, the way an image resolves out of noise the longer you look.
+        I project onto rice paper because the image reads from both sides. You can walk around it and stand behind it and still be inside the picture, so the image becomes something you have a physical relationship with. Here the projections were videos I shot in the State Historic Park next door, hung so that visitors moved between them. I wanted the plants outside to come inside, and for people to notice where they were standing while it happened.
       </p>
 
       <div class="project-video">
         <video
           class="content-vid"
-          poster="/images/echo%20garden/Echo_Garden_Documentation_poster.jpg"
-          aria-label="Echo Garden, documentation video"
+          poster="/images/Untitled_walk_april_2021/Untitled_Walk_Documentation_poster.jpg"
+          aria-label="Untitled Walk, documentation video"
           controls
           playsinline
           preload="metadata"
         >
-          <source src="/images/echo%20garden/Echo_Garden_Documentation.mp4" type="video/mp4" />
+          <source src="/images/Untitled_walk_april_2021/Untitled_Walk_Documentation.mp4" type="video/mp4" />
         </video>
       </div>
-
-      <p>
-        Visitors could add to it too. A prompt at the edge of the installation read "add a thought, type below or scan QR": type directly into the piece, or scan the code to add from your own phone. A button marked Plant submits it. Echo Garden became a community garden this way: not one voice growing the piece, but everyone who passed through it, each thought folding into the next visitor's view of a digital garden that kept growing after they left.
-      </p>
 
       <div class="image-pair">
         <div class="project-image">
           <img
-            src="/images/echo%20garden/IMG_5179.jpg"
-            alt="Full wall projection of Echo Garden, with the add-a-thought prompt and QR code visible"
+            src="/images/Untitled_walk_april_2021/0C20EC9D-B5FB-49AC-9E8A-2369DE733E22.JPG"
+            alt="The empty room: rice-paper squares of different sizes hung on thin wire, glowing with projected greenery"
             class="content-img"
             onerror="this.style.display='none'"
           />
         </div>
         <div class="project-image">
           <img
-            src="/images/echo%20garden/3F5BDE58-F197-4D1D-9D9B-10FB5EE74EE1.jpg"
-            alt="Close detail of the shifting text-character grid"
+            src="/images/Untitled_walk_april_2021/IMG_9690.jpg"
+            alt="A person standing among the hanging squares, projected leaves falling across their face"
             class="content-img"
             onerror="this.style.display='none'"
           />
         </div>
       </div>
-
-      <div class="project-image">
-        <img
-          src="/images/echo%20garden/4180A380-617D-4A69-9B96-DA031F63498B.jpg"
-          alt="Nadine standing beside the installation"
-          class="content-img"
-          onerror="this.style.display='none'"
-        />
-      </div>
-
-      <p>
-        Shown at IADE – Universidade Europeia, Lisbon, 2025.
-      </p>
 
     </div>
 
     <div class="project-meta">
       <div class="meta-row">
         <span class="meta-label eyebrow">year</span>
-        <span class="meta-value">2025</span>
+        <span class="meta-value">2021</span>
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">medium</span>
-        <span class="meta-value">generative media: p5.js</span>
+        <span class="meta-value">installation: rice paper, projection mapping</span>
       </div>
       <div class="meta-row">
         <span class="meta-label eyebrow">venue</span>
-        <span class="meta-value">IADE – Universidade Europeia, Lisbon · 2025</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label eyebrow">tools</span>
-        <span class="meta-value">p5.js · JavaScript</span>
+        <span class="meta-value">Spring Street Studio, Los Angeles</span>
       </div>
     </div>
 
@@ -135,14 +114,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     color: var(--mid);
     margin-bottom: var(--space-3);
   }
-  p {
-    font-family: var(--font-mono);
-    font-size: var(--text-base);
-    font-weight: var(--w-light);
-    line-height: var(--lh-body);
-    color: var(--mid);
-    margin-bottom: var(--space-3);
-  }
 
   .project-image {
     background: var(--surface);
@@ -178,6 +149,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
   .image-pair .project-image {
     margin: 0;
+  }
+  .image-pair .content-img {
+    height: 100%;
+    object-fit: cover;
   }
 
   .project-meta {
